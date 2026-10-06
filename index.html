@@ -1846,6 +1846,12 @@ body.light-mode footer{background:#dde8e0}
 .footer-legal a:hover{color:var(--accent,#22a447);text-decoration:underline}
 .footer-legal-btn{background:none;border:0;color:rgba(225,235,229,.5);font:400 .8rem Inter,sans-serif;cursor:pointer;padding:0;text-decoration:underline dotted}
 .footer-legal-btn:hover{color:var(--accent,#22a447)}
+body.light-mode .footer-legal{border-top-color:rgba(0,0,0,.08)}
+body.light-mode .footer-legal a,
+body.light-mode .footer-legal-btn{color:rgba(17,17,40,.5)}
+body.light-mode .footer-legal a:hover,
+body.light-mode .footer-legal-btn:hover{color:#6c5ce7}
+body.light-mode .cf-status.ok{color:#15803d}
 
 /* ===== Banner de consentimiento ===== */
 #consentBar{position:fixed;left:0;right:0;bottom:0;z-index:8000;background:#0b1710;color:#eef6f0;
@@ -1872,7 +1878,7 @@ body.light-mode footer{background:#dde8e0}
   .cb-btn{flex:1 1 auto;text-align:center}
 }
 </style></head>
-<body>
+<body class="light-mode">
 <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
 
   <div class="glow glow-1"></div>
@@ -2893,11 +2899,7 @@ const svcPhotos = ['assets/img/servicio-ftl.webp','assets/img/servicio-ltl.webp'
       document.querySelector('.hamburger').classList.toggle('open');
     }
 
-    var currentTheme = localStorage.getItem('trans_theme') || 'dark';
-
-    if (!localStorage.getItem('trans_theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      currentTheme = 'light';
-    }
+    var currentTheme = localStorage.getItem('trans_theme') || 'light';
 
     function toggleTheme() {
       currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
