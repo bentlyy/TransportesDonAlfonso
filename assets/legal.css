@@ -1,0 +1,202 @@
+:root {
+  --bg: #07100c;
+  --card: #0d1711;
+  --line: rgba(255, 255, 255, 0.1);
+  --txt: #f2f7f4;
+  --muted: rgba(228, 240, 232, 0.66);
+  --green: #22a447;
+  --green2: #2dc75a;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--txt);
+  font: 400 1rem/1.75 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(70% 55% at 12% 0%, rgba(34, 164, 71, 0.14), transparent 60%),
+    radial-gradient(60% 50% at 92% 8%, rgba(155, 220, 66, 0.08), transparent 60%),
+    linear-gradient(180deg, #07100c, #08110d 50%, #050a07);
+}
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 1.25rem; }
+
+header.top {
+  border-bottom: 1px solid var(--line);
+  background: rgba(5, 12, 8, 0.82);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+header.top .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  flex-wrap: wrap;
+}
+.brand {
+  font: 700 1.05rem/1 "Space Grotesk", sans-serif;
+  letter-spacing: 2px;
+  color: var(--txt);
+  text-decoration: none;
+}
+.brand span { color: var(--green); }
+header.top nav { display: flex; gap: 1rem; flex-wrap: wrap; }
+header.top nav a { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
+header.top nav a:hover,
+header.top nav a[aria-current="page"] { color: var(--green2); }
+header.top nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
+
+h1 {
+  font: 700 clamp(1.9rem, 5vw, 2.9rem)/1.12 "Space Grotesk", sans-serif;
+  letter-spacing: -1.2px;
+  margin: 2.6rem 0 0.5rem;
+}
+.sub { color: var(--muted); font-size: 0.95rem; margin: 0 0 0.4rem; }
+.actualizado { color: rgba(228, 240, 232, 0.45); font-size: 0.8rem; margin: 0 0 2rem; }
+
+h2 {
+  font: 700 1.28rem/1.3 "Space Grotesk", sans-serif;
+  margin: 2.4rem 0 0.7rem;
+  padding-top: 0.4rem;
+  color: #fff;
+}
+h3 { font: 600 1.02rem/1.4 "Space Grotesk", sans-serif; margin: 1.4rem 0 0.4rem; color: #dff0e4; }
+p { margin: 0 0 1rem; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.3rem; }
+li { margin-bottom: 0.4rem; }
+a { color: #8fd6a3; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.3rem 1.4rem;
+  margin: 0 0 1.2rem;
+}
+.aviso {
+  border-left: 3px solid var(--green);
+  background: rgba(34, 164, 71, 0.08);
+  padding: 1rem 1.2rem;
+  border-radius: 0 10px 10px 0;
+  margin: 0 0 1.6rem;
+  font-size: 0.92rem;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 0 0 1.4rem; font-size: 0.9rem; }
+th, td { text-align: left; padding: 0.65rem 0.7rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: #fff; font-weight: 600; background: rgba(255, 255, 255, 0.03); }
+.tag-si { color: #5fd98a; font-weight: 600; }
+.tag-no { color: #e2894a; font-weight: 600; }
+
+.datos {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+  margin: 0 0 1.6rem;
+}
+.datos dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0.4rem 1rem; font-size: 0.93rem; }
+.datos dt { color: var(--muted); }
+.datos dd { margin: 0; }
+
+form.rec {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.4rem;
+  margin: 0 0 1.6rem;
+}
+form.rec .fila { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1rem; }
+form.rec label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+form.rec input,
+form.rec select,
+form.rec textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.28);
+  color: var(--txt);
+  font: 400 0.95rem/1.5 "Inter", sans-serif;
+}
+form.rec input:focus,
+form.rec select:focus,
+form.rec textarea:focus {
+  outline: 2px solid var(--green);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+form.rec .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+form.rec .chk {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+form.rec .chk input { width: 18px; height: 18px; flex: 0 0 18px; margin-top: 2px; accent-color: var(--green); }
+form.rec button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 9px;
+  border: 0;
+  background: var(--green);
+  color: #fff;
+  font: 600 0.92rem "Inter", sans-serif;
+  cursor: pointer;
+  width: 100%;
+}
+form.rec button:hover { background: var(--green2); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+footer.bot {
+  border-top: 1px solid var(--line);
+  margin-top: 3.5rem;
+  padding: 2rem 0 3rem;
+  font-size: 0.85rem;
+  color: rgba(228, 240, 232, 0.5);
+}
+footer.bot .wrap { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; justify-content: space-between; align-items: center; }
+footer.bot nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+footer.bot a,
+footer.bot button { color: rgba(228, 240, 232, 0.5); text-decoration: none; }
+footer.bot a:hover,
+footer.bot button:hover { color: var(--green2); text-decoration: underline; }
+footer.bot button { background: none; border: 0; font: 400 0.85rem "Inter", sans-serif; cursor: pointer; padding: 0; }
+
+.volver { display: inline-block; margin-top: 1.4rem; color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+.volver:hover { color: var(--green2); }
+
+@media (max-width: 640px) {
+  form.rec .g2 { grid-template-columns: 1fr; }
+  .datos dl { grid-template-columns: 1fr; gap: 0.1rem; }
+  .datos dt { margin-top: 0.5rem; }
+  h1 { margin-top: 2rem; }
+}
+@media print {
+  header.top { display: none; }
+  body::before { display: none; }
+  body { background: #fff; color: #000; }
+  a { color: #000; }
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Libro de Reclamaciones | TRANSALLENDES</title>
+<meta name="description" content="Libro de Reclamaciones virtual de TRANSALLENDES, conforme a la Ley 19.496.">
+<meta name="robots" content="noindex, follow">
+<meta name="author" content="{{RAZON_SOCIAL}}">
+<link rel="canonical" href="https://{{DOMINIO}}/reclamaciones.html">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#07100c">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/legal.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Libro de Reclamaciones","url":"https://{{DOMINIO}}/reclamaciones.html","isPartOf":{"@type":"WebSite","name":"TRANSALLENDES","url":"https://{{DOMINIO}}/"},"inLanguage":"es-CL","dateModified":"{{FECHA_ACTUALIZACION}}"}
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">TRANS<span>ALLENDES</span></a>
+    <nav aria-label="Páginas legales">
+      <a href="privacidad.html">Privacidad</a>
+      <a href="terminos.html">Términos</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="reclamaciones.html" aria-current="page">Reclamaciones</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<h1>Libro de Reclamaciones</h1>
+<p class="sub">Presenta tu reclamo o denuncia y recibe una respuesta formal.</p>
+<p class="actualizado">Última actualización: {{FECHA_ACTUALIZACION}}</p>
+
+<div class="aviso">
+Conforme al artículo 41 bis de la Ley 19.496 sobre Protección al Consumidor, todo proveedor debe mantener un Libro de Reclamaciones virtual, disponible en su sitio web. Cada reclamo debe recibir respuesta dentro de los <b>10 días hábiles</b> siguientes a su recepción.
+</div>
+
+<div class="datos">
+<dl>
+<dt>Proveedor</dt><dd>{{RAZON_SOCIAL}}</dd>
+<dt>RUT</dt><dd>{{RUT}}</dd>
+<dt>Representante legal</dt><dd>{{REPRESENTANTE}}</dd>
+<dt>Domicilio</dt><dd>{{DOMICILIO}}, Chile</dd>
+<dt>Correo</dt><dd><a href="mailto:{{EMAIL_OPERACIONES}}">{{EMAIL_OPERACIONES}}</a></dd>
+</dl>
+</div>
+
+<h2>Formulario de reclamo o denuncia</h2>
+
+<form class="rec" method="post" action="{{RECLAMACIONES_ENDPOINT}}">
+  <div class="g2">
+    <div class="fila">
+      <label for="rc-nombre">Nombre y apellido</label>
+      <input type="text" id="rc-nombre" name="nombre" required autocomplete="name">
+    </div>
+    <div class="fila">
+      <label for="rc-rut">RUT</label>
+      <input type="text" id="rc-rut" name="rut" required>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="fila">
+      <label for="rc-email">Correo electrónico</label>
+      <input type="email" id="rc-email" name="email" required autocomplete="email">
+    </div>
+    <div class="fila">
+      <label for="rc-telefono">Teléfono</label>
+      <input type="tel" id="rc-telefono" name="telefono">
+    </div>
+  </div>
+  <div class="g2">
+    <div class="fila">
+      <label for="rc-tipo">Tipo de solicitud</label>
+      <select id="rc-tipo" name="tipo" required>
+        <option value="">Selecciona una opción</option>
+        <option>Reclamo</option>
+        <option>Denuncia</option>
+      </select>
+    </div>
+    <div class="fila">
+      <label for="rc-fecha">Fecha del hecho o de la compra</label>
+      <input type="date" id="rc-fecha" name="fecha">
+    </div>
+  </div>
+  <div class="fila">
+    <label for="rc-servicio">Servicio o transacción</label>
+    <input type="text" id="rc-servicio" name="servicio" placeholder="Ej.: transporte, guía o factura">
+  </div>
+  <div class="fila">
+    <label for="rc-detalle">Descripción</label>
+    <textarea id="rc-detalle" name="detalle" rows="6" required></textarea>
+  </div>
+  <div class="fila">
+    <label for="rc-espera">Qué solución esperas</label>
+    <textarea id="rc-espera" name="espera" rows="3"></textarea>
+  </div>
+  <div class="fila">
+    <label class="chk" for="rc-privacidad">
+      <input type="checkbox" id="rc-privacidad" name="acepto_privacidad" required>
+      <span>Acepto que mis datos sean tratados para gestionar este reclamo, conforme a la <a href="privacidad.html">Política de Privacidad</a>.</span>
+    </label>
+  </div>
+  <div class="hp" aria-hidden="true">
+    <label for="rc-web">No completar</label>
+    <input type="text" id="rc-web" name="sitio_web" tabindex="-1" autocomplete="off">
+  </div>
+  <button type="submit">Enviar reclamo</button>
+</form>
+
+<h2>Cómo funciona</h2>
+<ol>
+<li>Envías el formulario con los datos del reclamo o denuncia.</li>
+<li>Recibimos un acuse de recibo con un número de folio.</li>
+<li>Respondemos por escrito dentro de 10 días hábiles, con la solución adoptada.</li>
+</ol>
+<p>Si la respuesta no te satisface, puedes reclamar ante el Servicio Nacional del Consumidor (SERNAC) en <a href="https://www.sernac.cl" rel="noopener nofollow" target="_blank">www.sernac.cl</a>.</p>
+
+<h2>Otras vías de contacto</h2>
+<p>También puedes escribir a <a href="mailto:{{EMAIL_OPERACIONES}}">{{EMAIL_OPERACIONES}}</a> o llamar al <a href="tel:{{TELEFONO}}">{{TELEFONO}}</a> indicando que se trata de un reclamo, para incorporarlo a este libro.</p>
+
+<p class="volver"><a href="index.html">&larr; Volver al inicio</a></p>
+</main>
+<footer class="bot">
+  <div class="wrap">
+    <span>&copy; <span id="anio">2026</span> {{RAZON_SOCIAL}} &middot; RUT {{RUT}}</span>
+    <nav aria-label="Enlaces legales">
+      <a href="privacidad.html">Privacidad</a>
+      <a href="terminos.html">Términos</a>
+      <a href="cookies.html">Cookies</a>
+      <button type="button" id="reconsentir">Cambiar preferencias de cookies</button>
+    </nav>
+  </div>
+</footer>
+<script>
+document.getElementById('anio').textContent = String(new Date().getFullYear());
+document.getElementById('reconsentir').addEventListener('click', function () {
+  try { localStorage.removeItem('tl_consent'); } catch (e) {}
+  location.href = 'index.html';
+});
+</script>
+</body>
+</html>

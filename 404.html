@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página no encontrada | TRANSALLENDES</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#07100c">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/legal.css">
+<style>
+main.wrap{text-align:center;padding-top:3rem;padding-bottom:4rem}
+.codigo{font:700 clamp(5rem,22vw,11rem)/1 "Space Grotesk",sans-serif;letter-spacing:-4px;margin:0;
+  background:linear-gradient(180deg,#2dc75a,#22a447);-webkit-background-clip:text;background-clip:text;color:transparent}
+.acciones{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:2rem}
+.acciones a{padding:.75rem 1.4rem;border-radius:9px;font:600 .9rem Inter,sans-serif;text-decoration:none;
+  border:1px solid rgba(34,164,71,.4);background:rgba(34,164,71,.14);color:#d7e6da;transition:background .2s}
+.acciones a:hover{background:rgba(34,164,71,.28)}
+.acciones a.primario{background:#22a447;color:#fff;border-color:transparent}
+.acciones a.primario:hover{background:#2dc75a}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">TRANS<span>ALLENDES</span></a>
+  </div>
+</header>
+<main class="wrap">
+  <p class="codigo">404</p>
+  <h1 style="margin-top:.5rem">No encontramos esta página</h1>
+  <p class="sub" style="max-width:520px;margin:0 auto 1rem">
+    Puede que el enlace haya cambiado o que la dirección esté mal escrita.
+    Te dejamos algunas alternativas para seguir navegando.
+  </p>
+  <div class="acciones">
+    <a class="primario" href="index.html">Ir al inicio</a>
+    <a href="index.html#servicios">Nuestros servicios</a>
+    <a href="index.html#contacto">Cotizar un envío</a>
+  </div>
+</main>
+<footer class="bot">
+  <div class="wrap">
+    <span>&copy; <span id="anio">2026</span> {{RAZON_SOCIAL}}</span>
+    <nav aria-label="Enlaces legales">
+      <a href="privacidad.html">Privacidad</a>
+      <a href="terminos.html">Términos</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="reclamaciones.html">Reclamaciones</a>
+    </nav>
+  </div>
+</footer>
+<script>
+document.getElementById('anio').textContent = String(new Date().getFullYear());
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Transallendes">
+  <rect width="64" height="64" rx="14" fill="#0a1e14"/>
+  <g fill="none" stroke="#22c55e" stroke-width="4.8" stroke-linecap="round">
+    <path d="M15 34a11 11 0 0 1 22 0"/>
+    <path d="M27 34a11 11 0 0 1 22 0"/>
+  </g>
+  <circle cx="17" cy="46" r="4" fill="#fff"/>
+  <circle cx="47" cy="21" r="4" fill="#fff"/>
+</svg>
