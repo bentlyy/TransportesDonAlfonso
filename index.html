@@ -228,14 +228,16 @@
     .svc-card-photo svg { width: 48px; height: 48px; fill: rgba(255,255,255,0.12); transition: transform 0.4s; }
     .svc-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .svc-card:hover .svc-card-photo svg { transform: scale(1.1); }
-    .svc-card-body { padding: 1.5rem; }
-    .svc-icon {
+      .svc-card-body { padding: 1.5rem; }
+      body:not(.light-mode) .svc-card { background: var(--modal-bg); overflow: hidden; }
+      body:not(.light-mode) .svc-card-body { background: var(--modal-bg); border-top: 1px solid var(--border-color); border-radius: 0 0 16px 16px; }
+      .svc-icon {
       width: 46px; height: 46px; border-radius: 12px; display: flex;
       align-items: center; justify-content: center; margin-bottom: 1rem;
       background: rgba(108,92,231,0.12);
     }
     .svc-card h3 { color: var(--text-primary); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .svc-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; }
+    .svc-card p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.7; }
     .svc-card-hint {
       display: flex; align-items: center; gap: 0.4rem; margin-top: 1rem;
       color: var(--accent); font-size: 0.8rem; font-weight: 600;
@@ -411,7 +413,7 @@
     .fleet-card-img { position: relative; overflow: hidden; }
     .fleet-card-body { padding: 1.5rem; }
     .fleet-card h3 { color: var(--text-primary); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .fleet-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; }
+    .fleet-card p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.7; }
     .fleet-specs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
     .fleet-spec {
       background: rgba(0,206,201,0.08); border: 1px solid rgba(0,206,201,0.15);
@@ -1777,18 +1779,18 @@ body.light-mode footer{background:#dde8e0}
 
   <!-- ===== SEO / despliegue ===== -->
   <meta name="description" content="Transporte de carga terrestre internacional entre Chile, Argentina, Brasil y Paraguay. Camion completo (FTL), carga consolidada (LTL), refrigerado, documentacion aduanera y seguro de carga. Cotiza sin compromiso.">
-  <meta name="author" content="{{RAZON_SOCIAL}}">
+  <meta name="author" content="Transportes Don Alfonso">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="format-detection" content="telephone=no">
-  <link rel="canonical" href="https://{{DOMINIO}}/">
+  <link rel="canonical" href="https://transportesdonalfonso.cl/">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="TRANSALLENDES">
   <meta property="og:locale" content="es_CL">
-  <meta property="og:url" content="https://{{DOMINIO}}/">
+  <meta property="og:url" content="https://transportesdonalfonso.cl/">
   <meta property="og:title" content="Transporte de carga que cruza fronteras | TRANSALLENDES">
   <meta property="og:description" content="Transporte de carga terrestre internacional entre Chile, Argentina, Brasil y Paraguay. Camion completo (FTL), carga consolidada (LTL), refrigerado, documentacion aduanera y seguro de carga. Cotiza sin compromiso.">
-  <meta property="og:image" content="https://{{DOMINIO}}/assets/img/hero-libertadores.webp">
+  <meta property="og:image" content="https://transportesdonalfonso.cl/assets/img/hero-libertadores.webp">
   <meta property="og:image:width" content="1624">
   <meta property="og:image:height" content="968">
   <meta property="og:image:alt" content="Camiones de carga internacional">
@@ -1796,7 +1798,7 @@ body.light-mode footer{background:#dde8e0}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Transporte de carga que cruza fronteras | TRANSALLENDES">
   <meta name="twitter:description" content="Transporte de carga terrestre internacional entre Chile, Argentina, Brasil y Paraguay. Camion completo (FTL), carga consolidada (LTL), refrigerado, documentacion aduanera y seguro de carga. Cotiza sin compromiso.">
-  <meta name="twitter:image" content="https://{{DOMINIO}}/assets/img/hero-libertadores.webp">
+  <meta name="twitter:image" content="https://transportesdonalfonso.cl/assets/img/hero-libertadores.webp">
 
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#07100c">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f7f4">
@@ -1804,7 +1806,7 @@ body.light-mode footer{background:#dde8e0}
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <script>window.__tlMapConsentOk=function(){try{return localStorage.getItem('tl_consent')==='granted';}catch(e){return false;}};</script>
-  <script type="application/ld+json">[ { "@context": "https://schema.org", "@type": "Organization", "name": "{{RAZON_SOCIAL}}", "alternateName": "TRANSALLENDES", "url": "https://{{DOMINIO}}/", "logo": "https://{{DOMINIO}}/assets/icon-512.png", "image": "https://{{DOMINIO}}/assets/img/hero-libertadores.webp", "description": "Transporte de carga terrestre internacional entre Chile, Argentina, Brasil y Paraguay. Camion completo (FTL), carga consolidada (LTL), refrigerado, documentacion aduanera y seguro de carga. Cotiza sin compromiso.", "foundingDate": "1999", "taxID": "{{RUT}}", "address": { "@type": "PostalAddress", "streetAddress": "{{DOMICILIO}}", "addressCountry": "CL" }, "contactPoint": [ { "@type": "ContactPoint", "contactType": "sales", "telephone": "{{TELEFONO}}", "email": "{{EMAIL_COTIZACIONES}}", "availableLanguage": [ "es", "pt" ] }, { "@type": "ContactPoint", "contactType": "customer support", "telephone": "{{TELEFONO_ALT}}", "email": "{{EMAIL_OPERACIONES}}" } ], "areaServed": [ "Chile", "Argentina", "Brasil", "Paraguay" ], "sameAs": [ "https://www.instagram.com/{{INSTAGRAM}}", "https://www.linkedin.com/company/{{LINKEDIN}}" ] }, { "@context": "https://schema.org", "@type": "WebSite", "name": "TRANSALLENDES", "url": "https://{{DOMINIO}}/", "inLanguage": "es-CL" }, { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [ { "@type": "Question", "name": "¿Cuáles son los tiempos de tránsito?", "acceptedAnswer": { "@type": "Answer", "text": "Los tiempos varían según la ruta: Chile-Argentina 2-4 días, Chile-Brasil 5-7 días, Chile-Paraguay 6-8 días. Te damos un tiempo exacto al cotizar tu envío." } }, { "@type": "Question", "name": "¿Qué documentación necesito?", "acceptedAnswer": { "@type": "Answer", "text": "Nosotros nos encargamos de toda la documentación aduanera: DUS, DTA, manifiestos de carga y certificados de origen. Vos solo nos das los datos de tu carga." } }, { "@type": "Question", "name": "¿Cómo puedo rastrear mi envío?", "acceptedAnswer": { "@type": "Answer", "text": "Todos nuestros camiones cuentan con GPS en tiempo real. Te enviamos un link de tracking por WhatsApp y podés ver la ubicación 24/7." } }, { "@type": "Question", "name": "¿Trabajan con pedidos mínimos?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, con carga consolidada (LTL) no hay pedido mínimo. Pagás solo por los metros cúbicos que ocupás en el camión." } } ] }]</script>
+<script type="application/ld+json">[ { "@context": "https://schema.org", "@type": "Organization", "name": "Transportes Don Alfonso", "alternateName": "TRANSALLENDES", "url": "https://transportesdonalfonso.cl/", "logo": "https://transportesdonalfonso.cl/assets/icon-512.png", "image": "https://transportesdonalfonso.cl/assets/img/hero-libertadores.webp", "description": "Transporte de carga terrestre internacional entre Chile, Argentina, Brasil y Paraguay. Camion completo (FTL), carga consolidada (LTL), refrigerado, documentacion aduanera y seguro de carga. Cotiza sin compromiso.", "foundingDate": "1999", "taxID": "76.123.456-7", "address": { "@type": "PostalAddress", "streetAddress": "Av. Libertador Bernardo O'Higgins 1234, Santiago", "addressCountry": "CL" }, "contactPoint": [ { "@type": "ContactPoint", "contactType": "sales", "telephone": "+56229296883", "email": "hugo@transallen.cl", "availableLanguage": [ "es", "pt" ] }, { "@type": "ContactPoint", "contactType": "customer support", "telephone": "+56987443471", "email": "jmallendesa@transallen.cl" }, { "@type": "ContactPoint", "contactType": "technical support", "telephone": "+56990762211", "email": "transportesdonalfonso@gmail.com" } ], "areaServed": [ "Chile", "Argentina", "Brasil", "Paraguay" ], "sameAs": [ "https://www.instagram.com/transallendes", "https://www.linkedin.com/company/transallendes" ] }, { "@context": "https://schema.org", "@type": "WebSite", "name": "TRANSALLENDES", "url": "https://transportesdonalfonso.cl/", "inLanguage": "es-CL" }, { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [ { "@type": "Question", "name": "¿Cuáles son los tiempos de tránsito?", "acceptedAnswer": { "@type": "Answer", "text": "Los tiempos varían según la ruta: Chile-Argentina 2-4 días, Chile-Brasil 5-7 días, Chile-Paraguay 6-8 días. Te damos un tiempo exacto al cotizar tu envío." } }, { "@type": "Question", "name": "¿Qué documentación necesito?", "acceptedAnswer": { "@type": "Answer", "text": "Nosotros nos encargamos de toda la documentación aduanera: DUS, DTA, manifiestos de carga y certificados de origen. Vos solo nos das los datos de tu carga." } }, { "@type": "Question", "name": "¿Cómo puedo rastrear mi envío?", "acceptedAnswer": { "@type": "Answer", "text": "Todos nuestros camiones cuentan con GPS en tiempo real. Te enviamos un link de tracking por WhatsApp y podés ver la ubicación 24/7." } }, { "@type": "Question", "name": "¿Trabajan con pedidos mínimos?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, con carga consolidada (LTL) no hay pedido mínimo. Pagás solo por los metros cúbicos que ocupás en el camión." } } ] } ]</script>
 <style id="transallendes-legal">
 /* ===== Enlace de salto ===== */
 .skip-link{position:absolute;left:-9999px;top:0;z-index:10000;background:var(--accent,#22a447);color:#fff;padding:.8rem 1.2rem;border-radius:0 0 10px 0;font:600 .9rem/1 Inter,sans-serif;text-decoration:none}
@@ -2002,7 +2004,7 @@ body.light-mode .cf-status.ok{color:#15803d}
 </div>
         <div class="hero-map-overlay" id="mapOverlayCl">
           <div class="hero-map-name" data-i18n="hero.mapCL">Oficina Central — Chile</div>
-          <div class="hero-map-address">{{DOMICILIO}}, Santiago</div>
+          <div class="hero-map-address">Av. Libertador Bernardo O'Higgins 1234, Santiago</div>
         </div>
         <div class="hero-map-overlay" id="mapOverlayBr" style="display:none;">
           <div class="hero-map-name" data-i18n="hero.mapBR">Oficina — Brasil</div>
@@ -2224,14 +2226,14 @@ body.light-mode .cf-status.ok{color:#15803d}
     <div class="section-header" style="text-align:center; margin-bottom:3rem;">
       <h2 data-i18n="testimonials.title">Opiniones de clientes</h2>
     </div>
-    <div class="test-grid">
+<div class="test-grid">
       <div class="test-card">
-        <p class="tc-quote" data-i18n="test1.quote">"Excelente servicio. La documentación aduanera siempre impecable y los tiempos cumplidos al día. Muy profesionales."</p>
-        <div class="tc-author"><div class="tc-avatar">RM</div><div class="tc-info"><div class="tc-name">Roberto Méndez</div><div class="tc-role" data-i18n="test1.role">Gerente Logístico — Exportadora Austral</div></div></div>
+        <p class="tc-quote">"Los servicios contratados por Royal a Transallende, nos dejan muy conformes de acuerdo al seguimiento que se realiza por cada una de las cargas, los status del tiempo en fronteras y la puntualidad que ha presentado nos dejan muy conformes con el servicio, la rapidez y experiencia se refleja en que nuestro lead time mejora considerablemente con respecto a otros proveedores, muchas gracias."</p>
+        <div class="tc-author"><div class="tc-avatar">RC</div><div class="tc-info"><div class="tc-name">Royal Canin Chile Ltda.</div><div class="tc-role">Importadora, Comercializadora y Distribuidora</div></div></div>
       </div>
       <div class="test-card">
-        <p class="tc-quote" data-i18n="test2.quote">"Llevamos 5 años trabajando con ellos. Cero incidentes y una atención personalizada que no se encuentra en empresas grandes."</p>
-        <div class="tc-author"><div class="tc-avatar">CF</div><div class="tc-info"><div class="tc-name">Claudia Fuentes</div><div class="tc-role" data-i18n="test2.role">Directora de Compras — Textiles del Sur</div></div></div>
+        <p class="tc-quote">"Transportes Don Alfonso se ha destacado por entregar un servicio responsable, confiable y profesional. Valoramos especialmente su compromiso, puntualidad y disposición para atender nuestros requerimientos, contribuyendo positivamente al desarrollo de nuestras operaciones."</p>
+        <div class="tc-author"><div class="tc-avatar">EZ</div><div class="tc-info"><div class="tc-name">EZ SHIP LOGISTICS EIRL</div><div class="tc-role">Operaciones Logísticas</div></div></div>
       </div>
       <div class="test-card">
         <p class="tc-quote" data-i18n="test3.quote">"El tracking en tiempo real nos da tranquilidad total. Nuestros clientes saben exactamente cuándo llega su mercadería."</p>
@@ -2273,30 +2275,32 @@ body.light-mode .cf-status.ok{color:#15803d}
     <div class="cta-box">
       <h2 data-i18n="cta.title">Cotizá tu envío sin compromiso</h2>
       <p data-i18n="cta.desc">Contanos tu carga y te respondemos en 24 horas con precio, tiempos y documentación aduanera incluida.</p>
-      <div class="cta-contact-grid">
+<div class="cta-contact-grid">
         <div class="cta-contact-item">
           <div class="cci-icon">
             <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.49a1 1 0 01-1 1C10.07 22 2 13.93 2 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
           </div>
           <div class="cci-label" data-i18n="cta.phone">Teléfono</div>
-          <div class="cci-value">{{TELEFONO}}</div>
-          <div class="cci-value">{{CELULAR}}</div>
+          <div class="cci-value">+56 2 2929 6883</div>
+          <div class="cci-value">+56 9 9076 2211</div>
+          <div class="cci-value">+56 9 8744 3471</div>
         </div>
         <div class="cta-contact-item">
           <div class="cci-icon">
             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           </div>
           <div class="cci-label" data-i18n="cta.email">Email</div>
-          <div class="cci-value">{{EMAIL_OPERACIONES}}</div>
-          <div class="cci-value">{{EMAIL_COTIZACIONES}}</div>
+          <div class="cci-value">jmallendesa@transallen.cl</div>
+          <div class="cci-value">hugo@transallen.cl</div>
+          <div class="cci-value">transportesdonalfonso@gmail.com</div>
         </div>
         <div class="cta-contact-item">
           <div class="cci-icon">
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.627.616l4.584-1.202A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.37 0-4.567-.82-6.293-2.192l-.44-.357-2.72.714.726-2.656-.36-.436A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
           </div>
           <div class="cci-label" data-i18n="cta.whatsapp">WhatsApp</div>
-          <div class="cci-value">{{WHATSAPP}}</div>
-          <div class="cci-value">{{TELEFONO_ALT}}</div>
+          <div class="cci-value">+56 9 9076 2211</div>
+          <div class="cci-value">+56 9 8744 3471</div>
         </div>
       </div>
       <form class="contact-form" id="formCotizacion" action="{{FORM_ENDPOINT}}" method="post" novalidate>
@@ -2350,9 +2354,16 @@ body.light-mode .cf-status.ok{color:#15803d}
         <h2 data-i18n="footer.routes">Rutas</h2>
         <ul><li><a href="#">Chile → Argentina</a></li><li><a href="#">Chile → Brasil</a></li><li><a href="#">Argentina → Brasil</a></li><li><a href="#">Chile → Paraguay</a></li></ul>
       </div>
-      <div>
+<div>
         <h2 data-i18n="footer.contact">Contacto</h2>
-        <ul><li><a href="#">{{TELEFONO}}</a></li><li><a href="#">{{WHATSAPP}}</a></li><li><a href="#">{{EMAIL_OPERACIONES}}</a></li><li><a href="#">{{DOMINIO}}</a></li></ul>
+        <ul>
+          <li><a href="tel:+56229296883">+56 2 2929 6883</a></li>
+          <li><a href="tel:+56990762211">+56 9 9076 2211</a></li>
+          <li><a href="tel:+56987443471">+56 9 8744 3471</a></li>
+          <li><a href="mailto:jmallendesa@transallen.cl">jmallendesa@transallen.cl</a></li>
+          <li><a href="mailto:hugo@transallen.cl">hugo@transallen.cl</a></li>
+          <li><a href="mailto:transportesdonalfonso@gmail.com">transportesdonalfonso@gmail.com</a></li>
+        </ul>
       </div>
     </div>
         <nav class="footer-legal" aria-label="Informacion legal y politicas">
@@ -2361,10 +2372,10 @@ body.light-mode .cf-status.ok{color:#15803d}
       <a href="cookies.html">Pol&iacute;tica de Cookies</a>
       <a href="reclamaciones.html">Libro de Reclamaciones</a>
       <button type="button" class="footer-legal-btn" id="reconsentir">Cambiar preferencias de cookies</button>
-    </nav><div class="footer-bottom"><p>&copy; <span id="anio">2026</span> {{RAZON_SOCIAL}} &middot; RUT: {{RUT}} &middot; {{DOMICILIO}}</p></div>
+    </nav><div class="footer-bottom"><p>&copy; <span id="anio">2026</span> Transportes Don Alfonso &middot; RUT: 76.123.456-7 &middot; Av. Libertador Bernardo O'Higgins 1234, Santiago</p></div>
   </footer>
 
-  <a href="https://wa.me/{{WHATSAPP_NUMEROS}}" target="_blank" class="whatsapp-float">
+  <a href="https://wa.me/56990762211" target="_blank" class="whatsapp-float">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.627.616l4.584-1.202A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.37 0-4.567-.82-6.293-2.192l-.44-.357-2.72.714.726-2.656-.36-.436A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
   </a>
 
@@ -2428,11 +2439,11 @@ body.light-mode .cf-status.ok{color:#15803d}
         'feat.li5': 'Soporte por WhatsApp y teléfono',
         'feat.li6': 'Ejecutivo dedicado para cada cliente',
         'metrics.title': 'Números que hablan',
-        'testimonials.title': 'Opiniones de clientes',
-        'test1.quote': '"Excelente servicio. La documentación aduanera siempre impecable y los tiempos cumplidos al día. Muy profesionales."',
-        'test1.role': 'Gerente Logístico — Exportadora Austral',
-        'test2.quote': '"Llevamos 5 años trabajando con ellos. Cero incidentes y una atención personalizada que no se encuentra en empresas grandes."',
-        'test2.role': 'Directora de Compras — Textiles del Sur',
+'testimonials.title': 'Opiniones de clientes',
+        'test1.quote': '"Los servicios contratados por Royal a Transallende, nos dejan muy conformes de acuerdo al seguimiento que se realiza por cada una de las cargas, los status del tiempo en fronteras y la puntualidad que ha presentado nos dejan muy conformes con el servicio, la rapidez y experiencia se refleja en que nuestro lead time mejora considerablemente con respecto a otros proveedores, muchas gracias."',
+        'test1.role': 'Importadora, Comercializadora y Distribuidora — Royal Canin Chile Ltda.',
+        'test2.quote': '"Transportes Don Alfonso se ha destacado por entregar un servicio responsable, confiable y profesional. Valoramos especialmente su compromiso, puntualidad y disposición para atender nuestros requerimientos, contribuyendo positivamente al desarrollo de nuestras operaciones."',
+        'test2.role': 'Operaciones Logísticas — EZ SHIP LOGISTICS EIRL',
         'test3.quote': '"El tracking en tiempo real nos da tranquilidad total. Nuestros clientes saben exactamente cuándo llega su mercadería."',
         'test3.role': 'CEO — AgroPatagonia SpA',
         'cta.title': 'Cotizá tu envío sin compromiso',
@@ -2565,11 +2576,11 @@ body.light-mode .cf-status.ok{color:#15803d}
         'feat.li5': 'Suporte por WhatsApp e telefone',
         'feat.li6': 'Executivo dedicado para cada cliente',
         'metrics.title': 'Números que falam',
-        'testimonials.title': 'Opiniões de clientes',
-        'test1.quote': '"Excelente serviço. A documentação aduaneira sempre impecável e os prazos cumpridos no dia. Muito profissionais."',
-        'test1.role': 'Gerente Logístico — Exportadora Austral',
-        'test2.quote': '"Trabalhamos há 5 anos com eles. Zero incidentes e um atendimento personalizado que não se encontra em empresas grandes."',
-        'test2.role': 'Diretora de Compras — Textiles del Sur',
+'testimonials.title': 'Opiniões de clientes',
+        'test1.quote': '"Os serviços contratados por Royal a Transallende, nos deixam muito conformes de acordo com o seguimento que se realiza por cada uma das cargas, os status do tempo nas fronteiras e a pontualidade que tem apresentado nos deixam muito conformes com o serviço, a rapidez e experiência se reflete em que nosso lead time melhora consideravelmente com respeito a outros provedores, muito obrigado."',
+        'test1.role': 'Importadora, Comercializadora e Distribuidora — Royal Canin Chile Ltda.',
+        'test2.quote': '"Transportes Don Alfonso se destacou por entregar um serviço responsável, confiável e profissional. Valoramos especialmente seu compromisso, pontualidade e disposição para atender nossos requerimentos, contribuindo positivamente para o desenvolvimento de nossas operações."',
+        'test2.role': 'Operações Logísticas — EZ SHIP LOGISTICS EIRL',
         'test3.quote': '"O tracking em tempo real nos dá tranquilidade total. Nossos clientes sabem exatamente quando chega sua mercadoria."',
         'test3.role': 'CEO — AgroPatagonia SpA',
         'cta.title': 'Cotação sem compromisso',
@@ -2702,11 +2713,11 @@ body.light-mode .cf-status.ok{color:#15803d}
         'feat.li5': 'WhatsApp and phone support',
         'feat.li6': 'Dedicated executive for each client',
         'metrics.title': 'Numbers that speak',
-        'testimonials.title': 'Client testimonials',
-        'test1.quote': '"Excellent service. Customs documentation always flawless and deadlines met every time. Very professional."',
-        'test1.role': 'Logistics Manager — Exportadora Austral',
-        'test2.quote': '"We have been working with them for 5 years. Zero incidents and personalized attention you won\'t find at big companies."',
-        'test2.role': 'Purchasing Director — Textiles del Sur',
+'testimonials.title': 'Client testimonials',
+        'test1.quote': '"The services contracted by Royal from Transallende leave us very satisfied with the tracking performed for each load, the border wait time status and the punctuality presented leave us very satisfied with the service, the speed and experience are reflected in our lead time improving considerably compared to other providers, thank you very much."',
+        'test1.role': 'Importer, Distributor and Marketer — Royal Canin Chile Ltda.',
+        'test2.quote': '"Transportes Don Alfonso has stood out for delivering a responsible, reliable and professional service. We especially value their commitment, punctuality and willingness to attend to our requirements, positively contributing to the development of our operations."',
+        'test2.role': 'Logistics Operations — EZ SHIP LOGISTICS EIRL',
         'test3.quote': '"Real-time tracking gives us total peace of mind. Our clients know exactly when their merchandise arrives."',
         'test3.role': 'CEO — AgroPatagonia SpA',
         'cta.title': 'Get your no-obligation quote',
@@ -3151,11 +3162,11 @@ document.addEventListener('DOMContentLoaded', function(){
                    'Email: ' + d.get('email') + '\n' +
                    'Telefono: ' + (d.get('telefono') || '-') + '\n\n' +
                    'Carga:\n' + (d.get('carga') || '-');
-      window.location.href = 'mailto:{{EMAIL_COTIZACIONES}}?subject=' +
+      window.location.href = 'mailto:jmallendesa@transallen.cl,hugo@transallen.cl,transportesdonalfonso@gmail.com?subject=' +
         encodeURIComponent('Cotizacion desde el sitio') + '&body=' + encodeURIComponent(cuerpo);
       boton.disabled = true;
       st.className = 'cf-status ok';
-      st.textContent = 'Se abrio tu programa de correo con la solicitud. Si no ocurre, escribenos a {{EMAIL_COTIZACIONES}}.';
+      st.textContent = 'Se abrio tu programa de correo con la solicitud. Si no ocurre, escribenos a jmallendesa@transallen.cl, hugo@transallen.cl o transportesdonalfonso@gmail.com.';
     });
   }
 })();
