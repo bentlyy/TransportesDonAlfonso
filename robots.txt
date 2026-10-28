@@ -4,4 +4,4 @@ Allow: /
 # Sin credenciales ni archivos de construccion publicados
 Disallow: /DEPLOY.md
 
-Sitemap: https://{{DOMINIO}}/sitemap.xml
+Sitemap: https://transportesdonalfonso.cl/sitemap.xml
