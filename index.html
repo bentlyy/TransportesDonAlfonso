@@ -2924,7 +2924,9 @@ const svcPhotos = ['assets/img/servicio-ftl.webp','assets/img/servicio-ltl.webp'
       if (!window._leafletMap || typeof L === 'undefined') return;
       if (window._leafletTileLayer) { window._leafletMap.removeLayer(window._leafletTileLayer); }
       window._leafletTileLayer = L.tileLayer(tileUrl, {
-        attribution: '&copy; OSM &copy; CARTO', maxZoom: 19
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> contributors',
+        maxZoom: 19,
+        subdomains: ['a','b','c']
       }).addTo(window._leafletMap);
     }
 
@@ -2936,12 +2938,12 @@ const svcPhotos = ['assets/img/servicio-ftl.webp','assets/img/servicio-ltl.webp'
         var svgHtml = '<svg viewBox="0 0 24 24">' + sunSvg + '</svg>';
         var el1 = document.getElementById('themeIcon'); if (el1) el1.innerHTML = sunSvg;
         var el2 = document.getElementById('themeIconMobile'); if (el2) el2.innerHTML = sunSvg;
-syncMapTiles('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png');
+syncMapTiles('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
       } else {
         document.body.classList.remove('light-mode');
         var el1 = document.getElementById('themeIcon'); if (el1) el1.innerHTML = moonSvg;
         var el2 = document.getElementById('themeIconMobile'); if (el2) el2.innerHTML = moonSvg;
-syncMapTiles('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png');
+syncMapTiles('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
       }
     }
 
@@ -2963,11 +2965,12 @@ window.__initTransallendesMap = function () {
   });
   L.control.zoom({ position: 'bottomright' }).addTo(map);
   var tileUrl = currentTheme === 'light'
-  ? 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
-  : 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+    ? 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   var tileLayer = L.tileLayer(tileUrl, {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener">OSM</a> &copy; <a href="https://carto.com/attributions" rel="noopener">CARTO</a>',
-    maxZoom: 19
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> contributors',
+    maxZoom: 19,
+    subdomains: ['a','b','c']
   }).addTo(map);
   window._leafletTileLayer = tileLayer;
   window._leafletMap = map;
