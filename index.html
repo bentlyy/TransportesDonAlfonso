@@ -2896,7 +2896,7 @@ const svcPhotos = ['assets/img/servicio-ftl.webp','assets/img/servicio-ltl.webp'
       moveMapThumb();
       if (window._leafletMap) {
         var coords = country === 'cl' ? [-33.456, -70.738] : [-23.505, -46.633];
-        var zoom = country === 'cl' ? 15 : 13;
+        var zoom = country === 'cl' ? 16 : 14;
         window._leafletMap.setView(coords, zoom, { animate: true, duration: 1.2 });
       }
     }
@@ -2961,7 +2961,7 @@ window.__initTransallendesMap = function () {
   el.classList.add('map-live');
   var map = L.map('leafletMap', {
     center: [-33.456, -70.738],
-    zoom: 15,
+    zoom: 16,
     zoomControl: false,
     attributionControl: true,
     scrollWheelZoom: false
