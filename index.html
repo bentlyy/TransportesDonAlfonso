@@ -2003,6 +2003,27 @@ body.light-mode .cf-status.ok{color:#15803d}
 .hero-v5 .hero-v5-bg,
 .hero-v5 .hero-photo-bg { max-width: 100%; }
 
+/* Desktop viewport correction: use a moderate lift without compressing the hero too much */
+@media (min-width: 1101px) {
+  .hero-banner.hero-v5 {
+    padding-top: clamp(5rem, 6vw, 6.25rem);
+    padding-bottom: 1.8rem;
+  }
+  .hero-v5-inner { gap: clamp(1.4rem, 2.7vw, 2.5rem); }
+  .hero-v5 h1 {
+    font-size: clamp(2.3rem, 3.65vw, 3.9rem);
+    line-height: 1.035;
+  }
+  .hero-v5-desc { line-height: 1.62; margin-bottom: 1.05rem; }
+  .hero-v5-actions { gap: .65rem; }
+  .hero-v5-actions .btn-primary,
+  .hero-v5-actions .btn-outline { min-height: 46px; padding-block: .75rem; }
+  .hero-map-v5 { height: clamp(260px, 25vw, 350px); }
+  .hero-info-panel { margin-top: .65rem; }
+  .hero-chips-strip { margin-top: .9rem; padding: .6rem; gap: .6rem; }
+  .hero-chips-strip .hchip { padding: .6rem .45rem; gap: .3rem .5rem; }
+}
+
 @media (max-width: 1100px) {
   .hero-banner.hero-v5 { padding-top: 6.8rem; }
   .hero-v5-inner { grid-template-columns: minmax(0, 1fr); gap: 1.8rem; }
