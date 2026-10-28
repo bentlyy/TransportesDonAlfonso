@@ -1914,7 +1914,8 @@ body.light-mode .cf-status.ok{color:#15803d}
       <li><a href="#testimonios" data-i18n="nav.clients">Clientes</a></li>
       <li>
         <div class="lang-switcher">
-          <button class="lang-btn active" onclick="setLang('es')">ES</button>
+          <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+          <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
         </div>
       </li>
       <li>
@@ -1935,7 +1936,8 @@ body.light-mode .cf-status.ok{color:#15803d}
     <a href="#contacto" onclick="toggleMobileMenu()" class="btn-primary" data-i18n="nav.cta">Cotizar &#8594;</a>
     <div style="display:flex;gap:0.8rem;margin-top:1rem;align-items:center;">
       <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
       </div>
       <button class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema" aria-label="Cambiar tema claro u oscuro">
         <svg viewBox="0 0 24 24" id="themeIconMobile"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
@@ -2813,21 +2815,26 @@ body.light-mode .cf-status.ok{color:#15803d}
       }
     };
 
-    let currentLang = 'es';
+    let currentLang = localStorage.getItem('trans_lang') || 'es';
 
     function setLang(lang) {
-      currentLang = 'es';
-      localStorage.setItem('trans_lang', 'es');
+      if (!['es', 'pt'].includes(lang)) lang = 'es';
+      currentLang = lang;
+      localStorage.setItem('trans_lang', lang);
       document.querySelectorAll('.lang-btn').forEach(b => {
-        b.classList.toggle('active', b.textContent.trim() === lang.toUpperCase());
+        b.classList.toggle('active', b.getAttribute('data-lang') === lang || b.textContent.trim().toLowerCase() === lang);
       });
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (T[lang] && T[lang][key]) el.innerHTML = T[lang][key];
       });
-      document.documentElement.lang = 'es';
-      document.title = 'Transportes Don Alfonso | Transporte de Carga Chile · Argentina · Brasil · Paraguay';
-      updateServiceCards();
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'es';
+      if (lang === 'pt') {
+        document.title = 'Transportes Don Alfonso | Transporte de Carga Chile - Argentina - Brasil - Paraguai';
+      } else {
+        document.title = 'Transportes Don Alfonso | Transporte de Carga Chile - Argentina - Brasil - Paraguay';
+      }
+      if (typeof updateServiceCards === 'function') updateServiceCards();
     }
 
     const svcKeys = ['ftl','ltl','ref','docs','ins','advice'];
