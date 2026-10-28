@@ -3060,7 +3060,7 @@ if (window.__tlMapConsentOk()) window.__initTransallendesMap();
 <script id="landing-v5-enhancements">
 document.addEventListener('DOMContentLoaded', function(){
   // Keep the existing language system but ensure the V5 hero starts translated.
-  if (typeof setLang === 'function') setLang(currentLang || 'es');
+  if (typeof setLang === 'function') setLang(localStorage.getItem('trans_lang') || 'es');
 
   // Close mobile menu after navigation.
   document.querySelectorAll('#mobileMenu a[href^="#"]').forEach(function(a){
