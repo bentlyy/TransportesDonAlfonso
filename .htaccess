@@ -1,5 +1,5 @@
 # ==========================================================================
-#  TRANSALLENDES - configuracion Apache
+#  TRANSPORTES DON ALFONSO - configuracion Apache
 #  Requiere mod_rewrite, mod_deflate, mod_expires y mod_headers
 #  Coloca este archivo en la raiz del sitio (junto a index.html)
 # ==========================================================================

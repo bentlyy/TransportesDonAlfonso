@@ -1,7 +1,23 @@
 User-agent: *
 Allow: /
 
-# Sin credenciales ni archivos de construccion publicados
+# Archivos de trabajo que no deben indexarse
 Disallow: /DEPLOY.md
+Disallow: /README.md
+Disallow: /.assetsignore
+Disallow: /.htaccess
+Disallow: /wrangler.jsonc
+Disallow: /nginx.conf.example
+Disallow: /fix_map.ps1
+Disallow: /logo_count.txt
+Disallow: /logo_lines.txt
+Disallow: /logo_list.txt
+Disallow: /logos.txt
+Disallow: /svc_css.txt
+Disallow: /svc_func.txt
+Disallow: /svc_js.txt
+Disallow: /temp_services.txt
+Disallow: /theme_css.txt
+Disallow: /trans_names.txt
 
 Sitemap: https://transportesdonalfonso.cl/sitemap.xml

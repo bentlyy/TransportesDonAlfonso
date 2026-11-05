@@ -1,7 +1,7 @@
 {
-  "name": "TRANSALLENDES",
-  "short_name": "TRANSALLENDES",
-  "description": "Transporte de carga terrestre internacional entre Chile, Argentina, Brasil y Paraguay.",
+  "name": "Transportes Don Alfonso",
+  "short_name": "Don Alfonso",
+  "description": "Transporte terrestre internacional de carga entre Chile, Argentina, Brasil y Paraguay.",
   "lang": "es-CL",
   "start_url": "/",
   "scope": "/",
@@ -35,7 +35,7 @@
       "name": "Cotizar",
       "short_name": "Cotizar",
       "url": "/#contacto",
-      "description": "Solicitar una cotizacion de transporte"
+      "description": "Solicitar una cotización de transporte"
     }
   ]
 }

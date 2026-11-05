@@ -1,169 +1,105 @@
-# Despliegue — TRANSALLENDES
+# Despliegue — Transportes Don Alfonso
 
-Sitio estático. No necesita PHP, base de datos ni Node.js. Solo un servidor web
-que sirva archivos y HTTPS.
+Sitio estático para `https://transportesdonalfonso.cl/`. No requiere build,
+PHP, base de datos ni Node.js en producción: solo un servidor que entregue
+archivos y HTTPS.
 
----
+## 1. Estructura publicable
 
-## 1. Antes de publicar: sustituir los placeholders
+- `index.html`: página principal, servicios, flota, FAQ, formulario y mapa.
+- `transporte-carga-chile-brasil/`, `transporte-carga-chile-argentina/`,
+  `transporte-carga-chile-paraguay/`, `transporte-refrigerado/` y
+  `transporte-ftl-ltl/`: páginas comerciales con contenido propio.
+- `privacidad.html`, `terminos.html`, `cookies.html`, `reclamaciones.html`:
+  páginas legales. Tienen `noindex` intencional y no van en el sitemap.
+- `404.html`: página de error.
+- `assets/`: imágenes, fuentes y estilos compartidos.
+- `sitemap.xml`, `robots.txt` y `manifest.webmanifest`: SEO y PWA.
+- `.htaccess` y `nginx.conf.example`: configuración para servidores propios.
+- `wrangler.jsonc`: configuración de Cloudflare Workers Assets.
 
-Abre **todos** los archivos de esta carpeta y reemplaza cada `{{...}}`.
-No queda ninguno válido para publicar.
+No hay placeholders `{{...}}` pendientes en el sitio publicado.
 
-| Placeholder | Qué poner | Ejemplo |
-|---|---|---|
-| `{{DOMINIO}}` | Dominio **sin** `https://` ni `www.` | `transallendes.cl` |
-| `{{RAZON_SOCIAL}}` | Razón social exacta del proveedor | `Servicios de Carga S.A.` |
-| `{{RUT}}` | RUT de la empresa | `76.123.456-7` |
-| `{{REPRESENTANTE}}` | Nombre del representante legal | `Nombre Apellido` |
-| `{{DOMICILIO}}` | Dirección completa de casa matriz | `Av. Ejemplo 1234, Of. 56, Santiago` |
-| `{{TELEFONO}}` | Teléfono principal, formato internacional sin `+` | `5622345678` |
-| `{{TELEFONO_ALT}}` | Teléfono de respaldo | `5629876543` |
-| `{{CELULAR}}` | Celular de contacto comercial | `56912345678` |
-| `{{WHATSAPP}}` | Mismo número de celular | `56912345678` |
-| `{{WHATSAPP_NUMEROS}}` | Números que se muestran en el botón flotante | `56912345678` |
-| `{{EMAIL_OPERACIONES}}` | Correo de soporte y operações | `operaciones@transallendes.cl` |
-| `{{EMAIL_COTIZACIONES}}` | Correo comercial que recibe cotizaciones | `cotizaciones@transallendes.cl` |
-| `{{FORM_ENDPOINT}}` | URL que recibe el formulario de cotización | `https://formulario.tudominio.cl/cotizacion` |
-| `{{RECLAMACIONES_ENDPOINT}}` | URL que recibe el Libro de Reclamaciones | `https://formulario.tudominio.cl/reclamo` |
-| `{{INSTAGRAM}}` | **Solo el usuario**, sin `@` ni URL | `transallendes` |
-| `{{LINKEDIN}}` | **Solo el identificador**, sin URL | `transallendes` |
-| `{{GA_ID}}` | ID de medición de Google Analytics 4 | `G-XXXXXXXXXX` |
-| `{{FECHA_ACTUALIZACION}}` | Fecha de última revisión legal visible | `12 de marzo de 2026` |
+## 2. Cloudflare Workers Assets
 
-### Verificación de que no quedó nada
-
-```powershell
-$p = 'C:\ruta\a\esta\carpeta'
-Select-String -Path "$p\*.html","$p\*.xml","$p\*.txt","$p\*.webmanifest" -Pattern '\{\{'
-```
-
-Si no devuelve nada, estás listo.
-
-### Comportamiento si algo queda sin configurar
-
-- Sin `{{GA_ID}}` → **no se carga Google Analytics**. Es intencional, no es un error.
-- Sin `{{FORM_ENDPOINT}}` → el formulario se envía por correo a
-  `{{EMAIL_COTIZACIONES}}` y avisa al usuario en pantalla.
-- Con `{{FORM_ENDPOINT}}` real → envío por HTTP `POST` a ese destino.
-
----
-
-## 2. Opciones de despliegue
-
-### 2.1 Apache
-
-Sube el contenido a `public_html/` o `www/`. El archivo `.htaccess` ya included:
-redirección a HTTPS, página 404, caché, compresión y cabeceras de seguridad.
-
-Requiere los módulos `rewrite`, `deflate`, `expires`, `headers`, `mime`.
-
-### 2.2 Nginx
-
-`nginx.conf.example` tiene un bloque `server {}` listo. Copiarlo dentro de la
-configuración del sitio, ajustar `root`, `server_name` y las rutas del
-certificado, luego:
+El proyecto publica la carpeta raíz como assets estáticos:
 
 ```bash
-nginx -t && systemctl reload nginx
+npx wrangler deploy
 ```
 
-### 2.3 Hosting estático (Netlify, Vercel, Cloudflare Pages, GitHub Pages)
-
-Sube la carpeta tal cual. No uses `.htaccess` en esos servicios: la configuración
-de cabeceras y redirecciones se hace en su panel o en un `headers` propio.
-
-Si usas Netlify, agrega un `_redirects` o configura en `netlify.toml`:
-
-```
-/privacidad  /privacidad.html  301
-/terminos    /terminos.html    301
-/cookies     /cookies.html     301
-```
-
----
-
-## 3. Certificado HTTPS
-
-En servidor propio con Let's Encrypt:
+Para probar en local:
 
 ```bash
-sudo certbot --nginx -d {{DOMINIO}} -d www.{{DOMINIO}}
+npx wrangler dev
 ```
 
-O, en Apache, con `certbot --apache`. El certificado se renueva automáticamente
-si instalaste el temporizador de `certbot`.
+`wrangler.jsonc` usa `"not_found_handling": "404-page"`, por lo que
+`404.html` responde ante rutas inexistentes. No se necesita comando de build.
 
-**No actives `Strict-Transport-Security` en `.htaccess` hasta confirmar que todo
-el sitio, incluidos los subdominios, responde por HTTPS.** Está comentado a
-propósito.
+Si se publica con Cloudflare Pages en lugar de Workers, usar la raíz del
+repositorio como directorio de salida y mantener `404.html` en la raíz.
 
----
+## 3. Archivos que no deben publicarse
 
-## 4. Lista de verificación antes de publicar
+Antes de desplegar, eliminar o excluir los archivos de trabajo:
 
-- [ ] No queda ningún `{{...}}` en el sitio.
-- [ ] Razón social, RUT y domicilio coinciden con la empresa real.
-- [ ] Los teléfonos y correos responden de verdad.
-- [ ] El formulario de cotización llega a un correo que se revisa a diario.
-- [ ] El Libro de Reclamaciones tiene un destino de envío real y **alguien
-      responde en menos de 10 días hábiles**.
-- [ ] Google Analytics 4 está configurado y **no se carga antes del consentimiento**.
-- [ ] Probaste en móvil, tablet y escritorio.
-- [ ] Probaste el tema claro y el oscuro.
-- [ ] Probaste el mapa: aparece la puerta de consentimiento y carga al aceptar.
-- [ ] La página 404 funciona.
-- [ ] `https://tudominio.cl/robots.txt` y `sitemap.xml` responden bien.
+- `README.md`, `DEPLOY.md`, `fix_map.ps1`, `wrangler.jsonc`,
+  `nginx.conf.example` y `.htaccess`.
+- `logo_count.txt`, `logo_lines.txt`, `logo_list.txt`, `logos.txt`,
+  `svc_css.txt`, `svc_func.txt`, `svc_js.txt`, `temp_services.txt`,
+  `theme_css.txt` y `trans_names.txt`.
 
----
+El archivo `.assetsignore` excluye esos archivos en Cloudflare Workers Assets.
+En otros hostings, borrarlos antes de subir la carpeta o bloquearlos desde el
+servidor.
 
-## 5. Revisión legal pendiente
+## 4. Formularios y analytics
 
-Los textos legales de `privacidad.html`, `terminos.html`, `cookies.html` y
-`reclamaciones.html` son **una base de trabajo, no un documento final**. Antes
-de publicar deben revisarlos un abogado, en particular:
+- El formulario principal usa `action=""`. Si no existe un endpoint real, el
+  JavaScript arma un `mailto:` con los datos y avisa al usuario.
+- `reclamaciones.html` usa `mailto:jmallendesa@transallen.cl` con el mismo
+  respaldo por JavaScript.
+- `GA_ID` está vacío: Google Analytics no se carga. Si se configura, debe
+  respetar el consentimiento de cookies.
+- Los datos de contacto visibles y del JSON-LD son:
+  `+56 2 2929 6883`, `+56 9 8744 3471`, `+56 9 9076 2211`,
+  `hugo@transallen.cl`, `jmallendesa@transallen.cl` y
+  `transportesdonalfonso@gmail.com`.
 
-- plazos de conservación y transferencias internacionales;
-- límites de responsabilidad y cobertura del seguro de carga;
-- cláusulas de jurisdicción y normativa aplicable a cada país de operación;
-- adequacy del Libro de Reclamaciones con la Ley 19.496;
-- textos de terceros (Google Analytics, OpenStreetMap, CARTO).
+## 5. Verificación antes de publicar
 
-Lo mismo aplica a las **métricas, la experiencia y los testimonios** publicados
-en `index.html`: deben ser verificables y estar autorizados por escrito.
+- [ ] No queda ningún `{{...}}` en HTML, XML, TXT ni Webmanifest.
+- [ ] `https://transportesdonalfonso.cl/robots.txt` y `sitemap.xml` responden.
+- [ ] Las 6 URLs del sitemap responden con 200 y canonical correcto.
+- [ ] `404.html` responde ante una ruta inexistente.
+- [ ] Los formularios llegan a un correo que se revisa a diario.
+- [ ] Se probó el sitio en móvil, tablet y escritorio.
+- [ ] Se probaron el tema claro/oscuro, el selector ES/PT y el menú móvil.
+- [ ] Se revisó la consola del navegador sin errores.
+- [ ] Se validó el JSON-LD y no hay enlaces internos rotos.
 
----
+## 6. Datos confirmados y pendientes
 
-## 6. Datos que se almacenan en el navegador
+El cliente confirmó el rango de temperatura de -25 °C a +25 °C, los sensores
+de temperatura, el seguro de carga según póliza, las características Euro VI y
+ABS, las capacidades de 26/28 toneladas, las frecuencias/tiempos de operación y
+la autorización de los tres testimonios publicados.
 
-| Clave | Contenido | Para qué |
-|---|---|---|
-| `tl_consent` | `granted` / `denied` | No volver a preguntar por analítica |
-| `tl_map` | `1` | Recordar que ya activaste el mapa |
-| `tl_theme` | `light` / `dark` | Recordar el tema elegido |
+Por decisión del cliente, no se publican razón social, RUT, domicilio ni
+representante legal. El formulario mantiene el respaldo `mailto:` y Google
+Analytics permanece desactivado.
 
-No hay cookies propias de seguimiento. `tl_consent` es el mecanismo que impide
-cargar Google Analytics antes de que el visitante acepte.
+Pendiente antes de publicar:
 
-Para cambiar la decisión, el enlace **"Cambiar preferencias de cookies"** del pie
-borra `tl_consent` y recarga la página.
+- revisión de los textos legales por un abogado, especialmente en protección
+  de datos, comercio internacional, seguros y Libro de Reclamaciones;
+- confirmar que los correos de contacto se revisan a diario.
 
----
+## 7. Search Console
 
-## 7. Cómo se generó este sitio
-
-`index.html` se generó a partir de `imagenes/landing-v6.html` mediante tres
-pasadas de PowerShell en `C:\Users\garay\AppData\Local\Temp\opencode`:
-
-| Script | Qué hace |
-|---|---|
-| `build-site.ps1` | Rutas de imágenes, WebP, `lazy`, datos de contacto, mapa |
-| `build-site2.ps1` | Formulario, enlaces legales, SEO, JSON-LD |
-| `build-site3.ps1` | `<main>`, CSS, banner de consentimiento, JS |
-
-Para regenerar desde cero: `build-site.ps1` → `build-site2.ps1` → `build-site3.ps1`.
-
-Las imágenes WebP se generaron con `webp3.ps1` (usa `ffmpeg`).
-
-`landing-v6.html` es la fuente original y **no se modifica**. Los fondos de las
-secciones y las imágenes usadas como `background-image` se conservaron tal cual.
+1. Verificar la propiedad del dominio.
+2. Enviar `https://transportesdonalfonso.cl/sitemap.xml`.
+3. Revisar `Páginas` e `Indexación` para confirmar las 6 URLs comerciales.
+4. Inspeccionar la URL principal y solicitar indexación.
+5. Revisar errores de datos estructurados y de experiencia móvil.

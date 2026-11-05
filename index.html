@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="page.title">Transportes Don Alfonso | Transporte de Carga Chile · Argentina · Brasil · Paraguay</title>
+  <title data-i18n="page.title">Transporte de Carga Chile, Argentina y Brasil | Don Alfonso</title>
   <link rel="stylesheet" href="assets/fonts/fonts.css" />
 <style>
     :root {
@@ -246,12 +246,14 @@
       color: var(--accent); font-size: 0.8rem; font-weight: 600;
     }
     .svc-card-hint svg { width: 16px; height: 16px; fill: var(--accent); }
+    .svc-card-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.8rem; color: var(--accent); font-size: 0.8rem; font-weight: 600; text-decoration: none; }
+    .svc-card-link:hover { text-decoration: underline; }
 
     .svc-modal-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: var(--overlay-bg); backdrop-filter: blur(8px);
       z-index: 200; display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity 0.4s;
+      opacity: 0; pointer-events: none; overflow: hidden; transition: opacity 0.4s;
     }
     .svc-modal-overlay.open { opacity: 1; pointer-events: all; }
     .svc-modal {
@@ -426,6 +428,9 @@
 
     @media (max-width: 1024px) {
       .hero-services-bar { grid-template-columns: repeat(2, 1fr); }
+      .metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .metric { min-width: 0; }
+      .metric .m-num, .metric .m-label { overflow-wrap: anywhere; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .fleet-grid { grid-template-columns: repeat(2, 1fr); }
       .cta-contact-grid { grid-template-columns: 1fr 1fr; }
@@ -437,7 +442,8 @@
       .lang-switcher { margin-left: auto; }
       .theme-toggle { margin-left: 0.5rem; }
       .hamburger { display: block; }
-      nav ul li a:not(.nav-cta), nav ul li .lang-switcher, nav ul li .theme-toggle { display: none; }
+      nav ul li a.nav-cta, nav ul li .lang-switcher, nav ul li .theme-toggle { display: none; }
+      nav ul { display: none; }
 
       .hero-banner { padding: 4.2rem 4% 1.5rem; }
       .hero-banner-inner { padding: 1.5rem; border-radius: 18px; }
@@ -689,6 +695,7 @@
     .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
     .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background: var(--bg-primary); z-index: 99; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s; overflow-y: auto; }
     .mobile-menu.open { opacity: 1; pointer-events: all; }
+    body.menu-open { overflow: hidden; }
     .mobile-menu a { color: var(--text-primary); text-decoration: none; font-size: 1.2rem; font-weight: 600; transition: color 0.3s; }
     .mobile-menu a:hover { color: var(--accent); }
 
@@ -746,7 +753,7 @@
 
 <style id="landing-v5-redesign">
 /* =========================================================
-   TRANSALLENDES — LANDING V5 VISUAL SYSTEM
+   TRANSPORTES DON ALFONSO — LANDING V5 VISUAL SYSTEM
    Corporate logistics / international road freight
    ========================================================= */
 :root{
@@ -1050,8 +1057,9 @@ body.light-mode footer{background:#dfe8e0}
   .fleet,.services,.features,.testimonials,.faq,.cta{padding-left:4%;padding-right:4%}
   .fleet-grid,.services-grid,.test-grid{grid-template-columns:1fr}
   .feat-grid{grid-template-columns:1fr;gap:2rem}
-  .metrics-grid{grid-template-columns:1fr 1fr}
-  .metric{border-right:0;border-bottom:1px solid rgba(255,255,255,.07)}
+  .metrics-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .metric{border-right:0;border-bottom:1px solid rgba(255,255,255,.07);min-width:0}
+  .metric .m-num,.metric .m-label{overflow-wrap:anywhere}
   .metric:nth-child(odd){border-right:1px solid rgba(255,255,255,.07)}
   .cta-box{padding:2rem 1.2rem}
   .cta-contact-grid{grid-template-columns:1fr}
@@ -1811,7 +1819,7 @@ body.light-mode footer{background:#dde8e0}
 </style>
 
   <!-- ===== SEO / despliegue ===== -->
-  <meta name="description" content="Transporte de carga terrestre internacional entre Chile, Argentina, Brasil y Paraguay. Camion completo (FTL), carga consolidada (LTL), refrigerado, documentacion aduanera y seguro de carga. Cotiza sin compromiso.">
+  <meta name="description" content="Transporte terrestre internacional de carga entre Chile, Argentina, Brasil y Paraguay. FTL, LTL, refrigerado y documentación aduanera. Cotiza tu envío.">
   <meta name="author" content="Transportes Don Alfonso">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="format-detection" content="telephone=no">
@@ -1819,19 +1827,15 @@ body.light-mode footer{background:#dde8e0}
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Transportes Don Alfonso">
-  <meta property="og:type" content="website">
   <meta property="og:url" content="https://transportesdonalfonso.cl/">
-  <meta property="og:title" content="Transporte de carga que cruza fronteras | Transportes Don Alfonso">
-  <meta property="og:description" content="Transporte de carga terrestre internacional entre Chile, Argentina, Brasil y Paraguay. Camion completo (FTL), carga consolidada (LTL), refrigerado, documentacion aduanera y seguro de carga. Cotiza sin compromiso.">
+  <meta property="og:title" content="Transporte terrestre internacional de carga | Transportes Don Alfonso">
+  <meta property="og:description" content="Transporte terrestre internacional de carga entre Chile, Argentina, Brasil y Paraguay. FTL, LTL, refrigerado y documentación aduanera. Cotiza tu envío.">
   <meta property="og:image" content="https://transportesdonalfonso.cl/assets/img/hero-libertadores.webp">
+  <meta property="og:image:alt" content="Camión de Transportes Don Alfonso en una ruta internacional">
   <meta property="og:locale" content="es_CL">
-  <meta property="og:locale:alternate" content="pt_BR">
-  <meta property="og:locale:alternate" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@transallendes">
-  <meta name="twitter:creator" content="@transallendes">
-  <meta name="twitter:title" content="Transporte de carga que cruza fronteras | Transportes Don Alfonso">
-  <meta name="twitter:description" content="Transporte de carga terrestre internacional entre Chile, Argentina, Brasil y Paraguay. Camion completo (FTL), carga consolidada (LTL), refrigerado, documentacion aduanera y seguro de carga. Cotiza sin compromiso.">
+  <meta name="twitter:title" content="Transporte terrestre internacional de carga | Transportes Don Alfonso">
+  <meta name="twitter:description" content="Transporte terrestre internacional de carga entre Chile, Argentina, Brasil y Paraguay. FTL, LTL, transporte refrigerado y documentación aduanera.">
   <meta name="twitter:image" content="https://transportesdonalfonso.cl/assets/img/hero-libertadores.webp">
 
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#07100c">
@@ -1840,8 +1844,103 @@ body.light-mode footer{background:#dde8e0}
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <script>window.__tlMapConsentOk=function(){try{return localStorage.getItem('tl_consent')==='granted';}catch(e){return false;}};</script>
-<script type="application/ld+json">[ { "@context": "https://schema.org", "@type": "Organization", "name": "Transportes Don Alfonso", "alternateName": "TRANSALLENDES", "url": "https://transportesdonalfonso.cl/", "logo": "https://transportesdonalfonso.cl/assets/icon-512.png", "image": "https://transportesdonalfonso.cl/assets/img/hero-libertadores.webp", "description": "Transporte de carga terrestre internacional entre Chile, Argentina, Brasil y Paraguay. Camion completo (FTL), carga consolidada (LTL), refrigerado, documentacion aduanera y seguro de carga. Cotiza sin compromiso.", "foundingDate": "1999", "taxID": "76.123.456-7", "address": { "@type": "PostalAddress", "streetAddress": "Av. Libertador Bernardo O'Higgins 1234, Santiago", "addressCountry": "CL" }, "contactPoint": [ { "@type": "ContactPoint", "contactType": "sales", "telephone": "+56229296883", "email": "hugo@transallen.cl", "availableLanguage": [ "es", "pt" ] }, { "@type": "ContactPoint", "contactType": "customer support", "telephone": "+56987443471", "email": "jmallendesa@transallen.cl" }, { "@type": "ContactPoint", "contactType": "technical support", "telephone": "+56990762211", "email": "transportesdonalfonso@gmail.com" } ], "areaServed": [ "Chile", "Argentina", "Brasil", "Paraguay" ], "sameAs": [ "https://www.instagram.com/transallendes", "https://www.linkedin.com/company/transallendes" ]   }, { "@context": "https://schema.org", "@type": "WebSite", "name": "Transportes Don Alfonso", "url": "https://transportesdonalfonso.cl/", "inLanguage": "es-CL" }, { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [ { "@type": "Question", "name": "¿Cuáles son los tiempos de tránsito?", "acceptedAnswer": { "@type": "Answer", "text": "Los tiempos varían según la ruta: Chile-Argentina 2-4 días, Chile-Brasil 5-7 días, Chile-Paraguay 6-8 días. Te damos un tiempo exacto al cotizar tu envío." } }, { "@type": "Question", "name": "¿Qué documentación necesito?", "acceptedAnswer": { "@type": "Answer", "text": "Nosotros nos encargamos de toda la documentación aduanera: DUS, DTA, manifiestos de carga y certificados de origen. Vos solo nos das los datos de tu carga." } }, { "@type": "Question", "name": "¿Cómo puedo rastrear mi envío?", "acceptedAnswer": { "@type": "Answer", "text": "Todos nuestros camiones cuentan con GPS en tiempo real. Te enviamos un link de tracking por WhatsApp y podés ver la ubicación 24/7." } }, { "@type": "Question", "name": "¿Trabajan con pedidos mínimos?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, con carga consolidada (LTL) no hay pedido mínimo. Pagás solo por los metros cúbicos que ocupás en el camión." } } ] } ]</script>
-<style id="transallendes-legal">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://transportesdonalfonso.cl/#organization",
+    "name": "Transportes Don Alfonso",
+    "url": "https://transportesdonalfonso.cl/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://transportesdonalfonso.cl/assets/icon-512.png"
+    },
+    "image": "https://transportesdonalfonso.cl/assets/img/hero-libertadores.webp",
+    "description": "Transporte terrestre internacional de carga entre Chile, Argentina, Brasil y Paraguay. FTL, LTL, transporte refrigerado y documentación aduanera.",
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "telephone": "+56229296883",
+        "email": "hugo@transallen.cl",
+        "availableLanguage": [
+          "es",
+          "pt"
+        ]
+      },
+      {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "telephone": "+56987443471",
+        "email": "jmallendesa@transallen.cl"
+      },
+      {
+        "@type": "ContactPoint",
+        "contactType": "technical support",
+        "telephone": "+56990762211",
+        "email": "transportesdonalfonso@gmail.com"
+      }
+    ],
+    "areaServed": [
+      "Chile",
+      "Argentina",
+      "Brasil",
+      "Paraguay"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://transportesdonalfonso.cl/#website",
+    "name": "Transportes Don Alfonso",
+    "url": "https://transportesdonalfonso.cl/",
+    "inLanguage": "es-CL",
+    "publisher": {
+      "@id": "https://transportesdonalfonso.cl/#organization"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuáles son los tiempos de tránsito?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Los tiempos dependen de la ruta, la documentación y los controles en frontera. Al cotizar tu envío te entregamos una estimación para tu operación."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué documentación necesito?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nosotros coordinamos la documentación aduanera de la operación: DUS, DTA, manifiestos de carga y certificados de origen. Tú nos entregas los datos de tu carga."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo puedo rastrear mi envío?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Los camiones cuentan con seguimiento GPS. Te enviamos un enlace de tracking por WhatsApp para que puedas revisar la ubicación durante el trayecto."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Trabajan con pedidos mínimos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Con carga consolidada (LTL) compartes espacio con otros envíos y pagas solo por los metros cúbicos que ocupas. Consúltanos por las condiciones de tu operación."
+        }
+      }
+    ]
+  }
+]
+</script>
+<style id="donalfonso-legal">
 /* ===== Enlace de salto ===== */
 .skip-link{position:absolute;left:-9999px;top:0;z-index:10000;background:var(--accent,#22a447);color:#fff;padding:.8rem 1.2rem;border-radius:0 0 10px 0;font:600 .9rem/1 Inter,sans-serif;text-decoration:none}
 .skip-link:focus{left:0}
@@ -1877,10 +1976,12 @@ body.light-mode footer{background:#dde8e0}
 
 /* ===== Enlaces legales del pie ===== */
 .footer-legal{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;justify-content:center;align-items:center;
+  position:static;width:auto;height:auto;min-height:0;top:auto;z-index:auto;
+  background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom:0;
   border-top:1px solid rgba(255,255,255,.07);padding:1.4rem 0 1.6rem;margin-bottom:0}
-.footer-legal a{color:rgba(225,235,229,.5);font-size:.8rem;text-decoration:none;transition:color .2s}
+.footer-legal a{color:rgba(225,235,229,.5);font-size:.8rem;text-decoration:none;transition:color .2s;min-height:24px;display:inline-flex;align-items:center;padding:.15rem .1rem}
 .footer-legal a:hover{color:var(--accent,#22a447);text-decoration:underline}
-.footer-legal-btn{background:none;border:0;color:rgba(225,235,229,.5);font:400 .8rem Inter,sans-serif;cursor:pointer;padding:0;text-decoration:underline dotted}
+.footer-legal-btn{background:none;border:0;color:rgba(225,235,229,.5);font:400 .8rem Inter,sans-serif;cursor:pointer;padding:.15rem .1rem;min-height:24px;display:inline-flex;align-items:center;text-decoration:underline dotted}
 .footer-legal-btn:hover{color:var(--accent,#22a447)}
 body.light-mode .footer-legal{border-top-color:rgba(0,0,0,.08)}
 body.light-mode .footer-legal a,
@@ -2043,7 +2144,12 @@ body.light-mode .cf-status.ok{color:#15803d}
   .hero-map-v5 { height: clamp(270px, 42vw, 360px); }
   .hero-chips-strip { max-width: 820px; }
 }
+@media (max-width: 1024px) {
+  nav ul { display: none; }
+  .hamburger { display: block; }
+}
 @media (max-width: 768px) {
+  .hamburger { display: block; }
   .hero-banner.hero-v5 { padding: 6rem 1rem 1.5rem; }
   .hero-v5-inner { gap: 1.4rem; }
   .hero-v5-copy { padding: 0; }
@@ -2070,6 +2176,7 @@ body.light-mode .cf-status.ok{color:#15803d}
   .hero-chips-strip .hchip { justify-content: flex-start; text-align: left; padding: .7rem .55rem; }
 }
 @media (max-width: 480px) {
+  nav .logo { font-size: clamp(1.1rem, 5.5vw, 1.35rem); letter-spacing: -.4px; }
   .hero-banner.hero-v5 { padding: 5.6rem .85rem 1.25rem; }
   .hero-v5-inner { gap: 1.2rem; }
   .hero-kicker { font-size: .62rem; letter-spacing: .3px; }
@@ -2104,6 +2211,28 @@ body.light-mode .cf-status.ok{color:#15803d}
   .hip-route { gap: .3rem; }
   .route-item strong { display: inline; }
 }
+
+/* Contraste accesible sin cambiar la identidad visual */
+.nav-cta,
+.btn-primary,
+.hero-v5 .btn-primary,
+.map-toggle-btn.active,
+.hero-map-v5 .map-toggle-btn.active,
+.lang-btn.active,
+.cb-accept { background: #157a35; color: #fff; }
+.nav-cta:hover,
+.btn-primary:hover,
+.hero-v5 .btn-primary:hover,
+.cb-accept:hover { background: #0f6b2e; }
+body.light-mode .lang-btn.active { color: #fff; }
+body.light-mode .map-toggle-btn.active,
+body.light-mode .hero-map-v5 .map-toggle-btn.active { background: #157a35; color: #fff; }
+.map-toggle-thumb { background: #157a35 !important; }
+body.light-mode footer ul li a,
+body.light-mode .footer-brand p,
+body.light-mode .footer-bottom,
+body.light-mode .footer-legal a,
+body.light-mode .footer-legal-btn { color: rgba(17, 17, 40, 0.72); }
 </style>
 
 </head>
@@ -2114,8 +2243,8 @@ body.light-mode .cf-status.ok{color:#15803d}
   <div class="glow glow-2"></div>
 
   <nav>
-      <a href="#" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Transportes <span>Don Alfonso</span></a>
-    <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Abrir menu de navegacion" aria-expanded="false">
+      <a href="index.html" class="logo">Transportes <span>Don Alfonso</span></a>
+    <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Abrir menú de navegación" aria-controls="mobileMenu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <ul>
@@ -2138,7 +2267,7 @@ body.light-mode .cf-status.ok{color:#15803d}
     </ul>
   </nav>
 
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
     <a href="#servicios" onclick="toggleMobileMenu()" data-i18n="nav.services">Servicios</a>
     <a href="#flota" onclick="toggleMobileMenu()" data-i18n="nav.fleet">Flota</a>
     <a href="#por-que" onclick="toggleMobileMenu()" data-i18n="nav.why">Por qu&eacute; nosotros</a>
@@ -2192,10 +2321,10 @@ body.light-mode .cf-status.ok{color:#15803d}
 
         <div class="hero-brand">Transportes <span>Don Alfonso</span></div>
 
-      <h1 data-i18n="hero.v5.title">Transporte de carga que cruza fronteras.</h1>
+      <h1 data-i18n="hero.v5.title">Transporte terrestre internacional de carga.</h1>
 
       <p class="hero-v5-desc" data-i18n="hero.v5.desc">
-        Soluciones de transporte terrestre internacional entre Chile, Argentina, Brasil y Paraguay.
+        Soluciones de transporte terrestre internacional desde Chile hacia Argentina, Brasil y Paraguay.
         Carga general y refrigerada con gestión aduanera.
       </p>
 
@@ -2232,20 +2361,20 @@ body.light-mode .cf-status.ok{color:#15803d}
   </div>
 </div>
         <div class="hero-map-overlay" id="mapOverlayCl">
-          <div class="hero-map-name" data-i18n="hero.mapCL">Oficina Central — Chile</div>
-          <div class="hero-map-address">Av. Libertador Bernardo O'Higgins 1234, Santiago</div>
+          <div class="hero-map-name" data-i18n="hero.mapCL">Cobertura — Chile</div>
+          <div class="hero-map-address" data-i18n="hero.mapCLInfo">Transporte terrestre internacional</div>
         </div>
         <div class="hero-map-overlay" id="mapOverlayBr" style="display:none;">
-          <div class="hero-map-name" data-i18n="hero.mapBR">Oficina — Brasil</div>
-          <div class="hero-map-address" data-i18n="hero.mapBRCity">Próximamente</div>
+          <div class="hero-map-name" data-i18n="hero.mapBR">Cobertura — Brasil</div>
+          <div class="hero-map-address" data-i18n="hero.mapBRCity">Rutas internacionales</div>
         </div>
       </div>
 
       <div class="hero-info-panel">
         <div class="hip-stats">
-          <div><strong>26+</strong><span data-i18n="stat.years">Años de experiencia</span></div>
-          <div><strong>4</strong><span data-i18n="stat.countries">Países conectados</span></div>
-          <div><strong>24/7</strong><span data-i18n="hero.v5.tracking">Seguimiento en ruta</span></div>
+          <div><strong>4</strong><span data-i18n="stat.routes">Países conectados</span></div>
+          <div><strong>FTL/LTL</strong><span data-i18n="stat.modes">Modalidades de carga</span></div>
+          <div><strong>GPS</strong><span data-i18n="stat.tracking">Seguimiento en ruta</span></div>
         </div>
         <div class="hip-route">
           <div class="route-item"><span class="route-flag">🇨🇱</span><strong>Chile</strong></div>
@@ -2322,7 +2451,7 @@ body.light-mode .cf-status.ok{color:#15803d}
         </div>
         <div class="fleet-card-body">
           <h3 data-i18n="fleet.fridge.title">Unidad Refrigerada</h3>
-          <p data-i18n="fleet.fridge.desc">Camiones con control de temperatura -25°C a +25°C. Sistema de monitoreo continuo con sensores y alertas automáticas.</p>
+          <p data-i18n="fleet.fridge.desc">Camiones con control de temperatura -25°C a +25°C. Sistema de monitoreo continuo con sensores de temperatura.</p>
           <div class="svc-card-hint" data-i18n="svc.more">Ver más <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></div>
         </div>
       </div>
@@ -2332,7 +2461,7 @@ body.light-mode .cf-status.ok{color:#15803d}
 
   <div class="svc-modal-overlay" id="fleetModal" onclick="closeFleet(event)">
     <div class="svc-modal" onclick="event.stopPropagation()">
-      <button class="svc-modal-close" onclick="closeFleet(event)"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+      <button class="svc-modal-close" onclick="closeFleet(event)" aria-label="Cerrar flota"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
       <div class="svc-modal-photo" id="fleetPhoto"></div>
       <div class="svc-modal-content" id="fleetContent"></div>
     </div>
@@ -2352,6 +2481,7 @@ body.light-mode .cf-status.ok{color:#15803d}
           <h3 data-i18n="svc.ftl.title">Camión Completo (FTL)</h3>
           <p data-i18n="svc.ftl.desc">Unidad exclusiva para tu carga. Ideal para envíos grandes con seguridad directa al destino.</p>
           <div class="svc-card-hint" data-i18n="svc.more">Ver más <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></div>
+          <a class="svc-card-link" href="transporte-ftl-ltl/" onclick="event.stopPropagation()">Ver página de FTL y LTL</a>
         </div>
       </div>
 
@@ -2360,8 +2490,9 @@ body.light-mode .cf-status.ok{color:#15803d}
         <div class="svc-card-body">
           <div class="svc-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="#6c5ce7"><path d="M20 2H4c-1.1 0-2 .9-2 2v3h2V4h16v16H4v-3H2v3c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-9 10H7l4-4 4 4h-4v4h-2v-4z"/></svg></div>
           <h3 data-i18n="svc.ltl.title">Carga Consolidada (LTL)</h3>
-          <p data-i18n="svc.ltl.desc">Comparte espacio con otros envíos y pagás solo por lo que necesitás.</p>
+          <p data-i18n="svc.ltl.desc">Comparte espacio con otros envíos y pagas solo por lo que necesitas.</p>
           <div class="svc-card-hint" data-i18n="svc.more">Ver más <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></div>
+          <a class="svc-card-link" href="transporte-ftl-ltl/" onclick="event.stopPropagation()">Ver página de FTL y LTL</a>
         </div>
       </div>
 
@@ -2372,6 +2503,7 @@ body.light-mode .cf-status.ok{color:#15803d}
           <h3 data-i18n="svc.ref.title">Transporte Refrigerado</h3>
           <p data-i18n="svc.ref.desc">Cadena de frío controlada de -25°C a +25°C para todo tipo de productos.</p>
           <div class="svc-card-hint" data-i18n="svc.more">Ver más <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></div>
+          <a class="svc-card-link" href="transporte-refrigerado/" onclick="event.stopPropagation()">Ver página de transporte refrigerado</a>
         </div>
       </div>
 
@@ -2390,7 +2522,7 @@ body.light-mode .cf-status.ok{color:#15803d}
         <div class="svc-card-body">
           <div class="svc-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="#6c5ce7"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></div>
           <h3 data-i18n="svc.ins.title">Seguro de Carga</h3>
-          <p data-i18n="svc.ins.desc">Cobertura full contra robo, daño y siniestros. Tu mercadería protegida.</p>
+          <p data-i18n="svc.ins.desc">Seguro de carga según las condiciones de la póliza. Tu mercadería protegida.</p>
           <div class="svc-card-hint" data-i18n="svc.more">Ver más <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></div>
         </div>
       </div>
@@ -2410,7 +2542,7 @@ body.light-mode .cf-status.ok{color:#15803d}
 
   <div class="svc-modal-overlay" id="svcModal" onclick="closeService(event)">
     <div class="svc-modal" onclick="event.stopPropagation()">
-      <button class="svc-modal-close" onclick="closeService(event)"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+      <button class="svc-modal-close" onclick="closeService(event)" aria-label="Cerrar servicio"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
       <div class="svc-modal-photo" id="modalPhoto"><img src="assets/img/servicio-ftl.webp" alt="Servicio" loading="lazy" decoding="async" width="1200" height="676"></div>
       <div class="svc-modal-content" id="modalContent"></div>
     </div>
@@ -2419,14 +2551,14 @@ body.light-mode .cf-status.ok{color:#15803d}
   <section class="features reveal" id="por-que">
     <div class="feat-grid">
       <div class="feat-content">
-        <h2 data-i18n="feat.title">Más de 26 años conectando Latinoamérica</h2>
-        <p data-i18n="feat.desc1">Desde 1999 somos el puente logístico entre Chile, Argentina, Brasil y Paraguay. Conocemos cada ruta, cada aduana y cada necesidad de nuestros clientes.</p>
-        <p data-i18n="feat.desc2">Nuestro proceso de cotización es simple: contanos tu carga y te damos una respuesta en menos de 24 horas con precio, tiempo y documentación incluida.</p>
+      <h2 data-i18n="feat.title">Logística internacional con coordinación directa</h2>
+      <p data-i18n="feat.desc1">Coordinamos transporte terrestre entre Chile, Argentina, Brasil y Paraguay. Conocemos la operación y acompañamos cada envío desde la cotización hasta la entrega.</p>
+        <p data-i18n="feat.desc2">Nuestro proceso de cotización es simple: cuéntanos tu carga y te damos una respuesta con precio, tiempo estimado y documentación incluida.</p>
         <ul class="feat-list">
-          <li data-i18n="feat.li1">Cotización sin compromiso en 24 horas</li>
-          <li data-i18n="feat.li2">Documentación aduanera incluida en el precio</li>
-          <li data-i18n="feat.li3">Seguro de carga full cover</li>
-          <li data-i18n="feat.li4">Seguimiento GPS en tiempo real 24/7</li>
+          <li data-i18n="feat.li1">Cotización sin compromiso</li>
+          <li data-i18n="feat.li2">Documentación aduanera gestionada por nuestro equipo</li>
+          <li data-i18n="feat.li3">Seguro de carga según las condiciones de la póliza</li>
+          <li data-i18n="feat.li4">Seguimiento GPS durante el trayecto</li>
           <li data-i18n="feat.li5">Soporte por WhatsApp y teléfono</li>
           <li data-i18n="feat.li6">Ejecutivo dedicado para cada cliente</li>
         </ul>
@@ -2441,13 +2573,13 @@ body.light-mode .cf-status.ok{color:#15803d}
 
   <section class="metrics reveal">
     <div class="section-header" style="text-align:center; margin-bottom:3rem;">
-      <h2 data-i18n="metrics.title">Números que hablan</h2>
+      <h2 data-i18n="metrics.title">Cobertura y servicios</h2>
     </div>
     <div class="metrics-grid">
-      <div class="metric"><div class="m-num" data-count="26" data-suffix="+">0+</div><div class="m-label" data-i18n="stat.years">A&#241;os de experiencia</div></div>
-      <div class="metric"><div class="m-num" data-count="4" data-suffix="">0</div><div class="m-label" data-i18n="stat.countries">Pa&#237;ses conectados</div></div>
-      <div class="metric"><div class="m-num" data-count="120" data-suffix="+">0</div><div class="m-label" data-i18n="stat.ontime">Envíos al mes</div></div>
-      <div class="metric"><div class="m-num" data-count="30" data-suffix="+">0+</div><div class="m-label" data-i18n="stat.fleet">Camiones propios</div></div>
+      <div class="metric"><div class="m-num">4</div><div class="m-label" data-i18n="stat.routes">Países conectados</div></div>
+      <div class="metric"><div class="m-num">FTL/LTL</div><div class="m-label" data-i18n="stat.modes">Modalidades de carga</div></div>
+      <div class="metric"><div class="m-num">-25/+25</div><div class="m-label" data-i18n="stat.temp">Rango refrigerado (°C)</div></div>
+      <div class="metric"><div class="m-num">GPS</div><div class="m-label" data-i18n="stat.tracking">Seguimiento en ruta</div></div>
     </div>
   </section>
 
@@ -2457,7 +2589,7 @@ body.light-mode .cf-status.ok{color:#15803d}
     </div>
 <div class="test-grid">
       <div class="test-card">
-        <p class="tc-quote">"Los servicios contratados por Royal a Transallende, nos dejan muy conformes de acuerdo al seguimiento que se realiza por cada una de las cargas, los status del tiempo en fronteras y la puntualidad que ha presentado nos dejan muy conformes con el servicio, la rapidez y experiencia se refleja en que nuestro lead time mejora considerablemente con respecto a otros proveedores, muchas gracias."</p>
+        <p class="tc-quote">"Los servicios contratados por Royal a Transportes Don Alfonso, nos dejan muy conformes de acuerdo al seguimiento que se realiza por cada una de las cargas, los status del tiempo en fronteras y la puntualidad que ha presentado nos dejan muy conformes con el servicio, la rapidez y experiencia se refleja en que nuestro lead time mejora considerablemente con respecto a otros proveedores, muchas gracias."</p>
         <div class="tc-author"><div class="tc-avatar">RC</div><div class="tc-info"><div class="tc-name">Royal Canin Chile Ltda.</div><div class="tc-role">Importadora, Comercializadora y Distribuidora</div></div></div>
       </div>
       <div class="test-card">
@@ -2480,30 +2612,30 @@ body.light-mode .cf-status.ok{color:#15803d}
       <div class="faq-item">
         <input type="checkbox" id="faq1">
         <label for="faq1" data-i18n="faq.q1">&#191;Cu&#225;les son los tiempos de tr&#225;nsito?</label>
-        <div class="faq-answer"><p data-i18n="faq.a1">Los tiempos var&#237;an seg&#250;n la ruta: Chile-Argentina 2-4 d&#237;as, Chile-Brasil 5-7 d&#237;as, Chile-Paraguay 6-8 d&#237;as. Te damos un tiempo exacto al cotizar tu env&#237;o.</p></div>
+        <div class="faq-answer"><p data-i18n="faq.a1">Los tiempos dependen de la ruta, la documentaci&#243;n y los controles en frontera. Al cotizar tu env&#237;o te entregamos una estimaci&#243;n para tu operaci&#243;n.</p></div>
       </div>
       <div class="faq-item">
         <input type="checkbox" id="faq2">
         <label for="faq2" data-i18n="faq.q2">&#191;Qu&#233; documentaci&#243;n necesito?</label>
-        <div class="faq-answer"><p data-i18n="faq.a2">Nosotros nos encargamos de toda la documentaci&#243;n aduanera: DUS, DTA, manifiestos de carga y certificados de origen. Vos solo nos das los datos de tu carga.</p></div>
+        <div class="faq-answer"><p data-i18n="faq.a2">Nosotros coordinamos la documentaci&#243;n aduanera de la operaci&#243;n: DUS, DTA, manifiestos de carga y certificados de origen. T&#250; nos entregas los datos de tu carga.</p></div>
       </div>
       <div class="faq-item">
         <input type="checkbox" id="faq3">
         <label for="faq3" data-i18n="faq.q3">&#191;C&#243;mo puedo rastrear mi env&#237;o?</label>
-        <div class="faq-answer"><p data-i18n="faq.a3">Todos nuestros camiones cuentan con GPS en tiempo real. Te enviamos un link de tracking por WhatsApp y pod&#233;s ver la ubicaci&#243;n 24/7.</p></div>
+        <div class="faq-answer"><p data-i18n="faq.a3">Los camiones cuentan con seguimiento GPS. Te enviamos un enlace de tracking por WhatsApp para que puedas revisar la ubicaci&#243;n durante el trayecto.</p></div>
       </div>
       <div class="faq-item">
         <input type="checkbox" id="faq4">
         <label for="faq4" data-i18n="faq.q4">&#191;Trabajan con pedidos m&#237;nimos?</label>
-        <div class="faq-answer"><p data-i18n="faq.a4">S&#237;, con carga consolidada (LTL) no hay pedido m&#237;nimo. Pag&#225;s solo por los metros c&#250;bicos que ocup&#225;s en el cami&#243;n.</p></div>
+        <div class="faq-answer"><p data-i18n="faq.a4">Con carga consolidada (LTL) compartes espacio con otros env&#237;os y pagas solo por los metros c&#250;bicos que ocupas. Cons&#250;ltanos por las condiciones de tu operaci&#243;n.</p></div>
       </div>
     </div>
   </section>
 
   <section class="cta" id="contacto">
     <div class="cta-box">
-      <h2 data-i18n="cta.title">Cotizá tu envío sin compromiso</h2>
-      <p data-i18n="cta.desc">Contanos tu carga y te respondemos en 24 horas con precio, tiempos y documentación aduanera incluida.</p>
+      <h2 data-i18n="cta.title">Cotiza tu envío sin compromiso</h2>
+      <p data-i18n="cta.desc">Cuéntanos tu carga y te respondemos con precio, tiempos estimados y documentación aduanera incluida.</p>
 <div class="cta-contact-grid">
         <div class="cta-contact-item">
           <div class="cci-icon">
@@ -2532,7 +2664,7 @@ body.light-mode .cf-status.ok{color:#15803d}
           <div class="cci-value">+56 9 8744 3471</div>
         </div>
       </div>
-      <form class="contact-form" id="formCotizacion" action="{{FORM_ENDPOINT}}" method="post" novalidate>
+      <form class="contact-form" id="formCotizacion" action="" method="post" novalidate>
         <div class="cf-field">
           <label for="cf-nombre">Nombre y apellido</label>
           <input id="cf-nombre" name="nombre" type="text" autocomplete="name" placeholder="Nombre y apellido" required>
@@ -2572,16 +2704,16 @@ body.light-mode .cf-status.ok{color:#15803d}
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Transportes <span>Don Alfonso</span></a>
-        <p data-i18n="footer.desc">Transporte de carga terrestre internacional. Conectamos Latinoamérica con seguridad y puntualidad, desde 1999.</p>
+      <a href="index.html" class="logo">Transportes <span>Don Alfonso</span></a>
+      <p data-i18n="footer.desc">Transporte de carga terrestre internacional. Conectamos Latinoamérica con seguridad y puntualidad.</p>
       </div>
       <div>
         <h2 data-i18n="footer.services">Servicios</h2>
-        <ul><li><a href="#">Camión Completo</a></li><li><a href="#">Carga Consolidada</a></li><li><a href="#">Refrigerado</a></li><li><a href="#">Documentación Aduanera</a></li></ul>
+        <ul><li><a href="transporte-ftl-ltl/">Camión completo (FTL)</a></li><li><a href="transporte-ftl-ltl/">Carga consolidada (LTL)</a></li><li><a href="transporte-refrigerado/">Transporte refrigerado</a></li><li><a href="index.html#servicios">Documentación aduanera</a></li></ul>
       </div>
       <div>
         <h2 data-i18n="footer.routes">Rutas</h2>
-        <ul><li><a href="#">Chile → Argentina</a></li><li><a href="#">Chile → Brasil</a></li><li><a href="#">Argentina → Brasil</a></li><li><a href="#">Chile → Paraguay</a></li></ul>
+        <ul><li><a href="transporte-carga-chile-argentina/">Chile → Argentina</a></li><li><a href="transporte-carga-chile-brasil/">Chile → Brasil</a></li><li><a href="index.html#contacto">Argentina → Brasil (consultar)</a></li><li><a href="transporte-carga-chile-paraguay/">Chile → Paraguay</a></li></ul>
       </div>
 <div>
         <h2 data-i18n="footer.contact">Contacto</h2>
@@ -2595,16 +2727,16 @@ body.light-mode .cf-status.ok{color:#15803d}
         </ul>
       </div>
     </div>
-        <nav class="footer-legal" aria-label="Informacion legal y politicas">
+        <nav class="footer-legal" aria-label="Información legal y políticas">
       <a href="privacidad.html">Pol&iacute;tica de Privacidad</a>
       <a href="terminos.html">T&eacute;rminos y Condiciones</a>
       <a href="cookies.html">Pol&iacute;tica de Cookies</a>
       <a href="reclamaciones.html">Libro de Reclamaciones</a>
       <button type="button" class="footer-legal-btn" id="reconsentir">Cambiar preferencias de cookies</button>
-    </nav><div class="footer-bottom"><p>&copy; <span id="anio">2026</span> Transportes Don Alfonso &middot; RUT: 76.123.456-7 &middot; Av. Libertador Bernardo O'Higgins 1234, Santiago</p></div>
+    </nav><div class="footer-bottom"><p>&copy; <span id="anio">2026</span> Transportes Don Alfonso &middot; Transporte terrestre internacional de carga</p></div>
   </footer>
 
-  <a href="https://wa.me/56990762211" target="_blank" class="whatsapp-float">
+  <a href="https://wa.me/56990762211" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Cotizar por WhatsApp">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.627.616l4.584-1.202A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.37 0-4.567-.82-6.293-2.192l-.44-.357-2.72.714.726-2.656-.36-.436A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
   </a>
 
@@ -2619,8 +2751,8 @@ body.light-mode .cf-status.ok{color:#15803d}
         'nav.cta': 'Cotizar →',
         'hero.tagline': 'Transporte de carga internacional',
 
-        'hero.v5.title': 'Transporte de carga que cruza fronteras.',
-        'hero.v5.desc': 'Soluciones de transporte terrestre internacional entre Chile, Argentina, Brasil y Paraguay. Carga general y refrigerada con gestión aduanera.',
+        'hero.v5.title': 'Transporte terrestre internacional de carga.',
+        'hero.v5.desc': 'Soluciones de transporte terrestre internacional desde Chile hacia Argentina, Brasil y Paraguay. Carga general y refrigerada con gestión aduanera.',
         'hero.v5.coverage': 'Cobertura internacional',
         'hero.v5.tracking': 'Seguimiento en ruta',
 
@@ -2629,14 +2761,15 @@ body.light-mode .cf-status.ok{color:#15803d}
         'hero.contact': 'Contacto',
         'hero.cta1': 'Cotizar Envío',
         'hero.cta2': 'Ver Servicios',
-        'hero.mapLabel': 'Oficina Central — Santiago',
-        'hero.mapCL': 'Oficina Central — Chile',
-        'hero.mapBR': 'Oficina — Brasil',
-        'hero.mapBRCity': 'Próximamente',
-        'stat.years': 'Años de experiencia',
-        'stat.countries': 'Países conectados',
-        'stat.ontime': 'Envíos al mes',
-        'stat.fleet': 'Camiones propios',
+        'hero.mapLabel': 'Cobertura — Chile',
+        'hero.mapCL': 'Cobertura — Chile',
+        'hero.mapCLInfo': 'Transporte terrestre internacional',
+        'hero.mapBR': 'Cobertura — Brasil',
+        'hero.mapBRCity': 'Rutas internacionales',
+        'stat.routes': 'Países conectados',
+        'stat.modes': 'Modalidades de carga',
+        'stat.temp': 'Rango refrigerado (°C)',
+        'stat.tracking': 'Seguimiento en ruta',
         'hsb.ftl': 'Camión Completo',
         'hsb.ltl': 'Carga Consolidada',
         'hsb.refrigerated': 'Refrigerado',
@@ -2648,68 +2781,68 @@ body.light-mode .cf-status.ok{color:#15803d}
         'svc.ftl.title': 'Camión Completo (FTL)',
         'svc.ftl.desc': 'Unidad exclusiva para tu carga. Ideal para envíos grandes con seguridad directa al destino.',
         'svc.ltl.title': 'Carga Consolidada (LTL)',
-        'svc.ltl.desc': 'Comparte espacio con otros envíos y pagás solo por lo que necesitás.',
+        'svc.ltl.desc': 'Comparte espacio con otros envíos y pagas solo por lo que necesitas.',
         'svc.ref.title': 'Transporte Refrigerado',
         'svc.ref.desc': 'Cadena de frío controlada de -25°C a +25°C para todo tipo de productos.',
         'svc.docs.title': 'Documentación Aduanera',
         'svc.docs.desc': 'Manejo completo de despacho aduanero y documentación para cruce internacional.',
         'svc.ins.title': 'Seguro de Carga',
-        'svc.ins.desc': 'Cobertura full contra robo, daño y siniestros. Tu mercadería protegida.',
+        'svc.ins.desc': 'Seguro de carga según las condiciones de la póliza. Tu mercadería protegida.',
         'svc.advice.title': 'Asesoría Personalizada',
         'svc.advice.desc': 'Ejecutivo dedicado que conoce tu operación y te asesora en cada envío.',
         'svc.more': 'Ver más',
-        'feat.title': 'Más de 26 años conectando Latinoamérica',
-        'feat.desc1': 'Desde 1999 somos el puente logístico entre Chile, Argentina, Brasil y Paraguay. Conocemos cada ruta, cada aduana y cada necesidad de nuestros clientes.',
-        'feat.desc2': 'Nuestro proceso de cotización es simple: contanos tu carga y te damos una respuesta en menos de 24 horas con precio, tiempo y documentación incluida.',
-        'feat.li1': 'Cotización sin compromiso en 24 horas',
-        'feat.li2': 'Documentación aduanera incluida en el precio',
-        'feat.li3': 'Seguro de carga full cover',
-        'feat.li4': 'Seguimiento GPS en tiempo real 24/7',
+        'feat.title': 'Logística internacional con coordinación directa',
+        'feat.desc1': 'Coordinamos transporte terrestre entre Chile, Argentina, Brasil y Paraguay. Conocemos la operación y acompañamos cada envío desde la cotización hasta la entrega.',
+        'feat.desc2': 'Nuestro proceso de cotización es simple: cuéntanos tu carga y te damos una respuesta con precio, tiempo estimado y documentación incluida.',
+        'feat.li1': 'Cotización sin compromiso',
+        'feat.li2': 'Documentación aduanera gestionada por nuestro equipo',
+        'feat.li3': 'Seguro de carga según las condiciones de la póliza',
+        'feat.li4': 'Seguimiento GPS durante el trayecto',
         'feat.li5': 'Soporte por WhatsApp y teléfono',
         'feat.li6': 'Ejecutivo dedicado para cada cliente',
-        'metrics.title': 'Números que hablan',
+        'metrics.title': 'Cobertura y servicios',
 'testimonials.title': 'Opiniones de clientes',
-        'test1.quote': '"Los servicios contratados por Royal a Transallende, nos dejan muy conformes de acuerdo al seguimiento que se realiza por cada una de las cargas, los status del tiempo en fronteras y la puntualidad que ha presentado nos dejan muy conformes con el servicio, la rapidez y experiencia se refleja en que nuestro lead time mejora considerablemente con respecto a otros proveedores, muchas gracias."',
+        'test1.quote': '"Los servicios contratados por Royal a Transportes Don Alfonso, nos dejan muy conformes de acuerdo al seguimiento que se realiza por cada una de las cargas, los status del tiempo en fronteras y la puntualidad que ha presentado nos dejan muy conformes con el servicio, la rapidez y experiencia se refleja en que nuestro lead time mejora considerablemente con respecto a otros proveedores, muchas gracias."',
         'test1.role': 'Importadora, Comercializadora y Distribuidora — Royal Canin Chile Ltda.',
         'test2.quote': '"Transportes Don Alfonso se ha destacado por entregar un servicio responsable, confiable y profesional. Valoramos especialmente su compromiso, puntualidad y disposición para atender nuestros requerimientos, contribuyendo positivamente al desarrollo de nuestras operaciones."',
         'test2.role': 'Operaciones Logísticas — EZ SHIP LOGISTICS EIRL',
         'test3.quote': '"El tracking en tiempo real nos da tranquilidad total. Nuestros clientes saben exactamente cuándo llega su mercadería."',
         'test3.role': 'CEO — AgroPatagonia SpA',
-        'cta.title': 'Cotizá tu envío sin compromiso',
-        'cta.desc': 'Contanos tu carga y te respondemos en 24 horas con precio, tiempos y documentación aduanera incluida.',
+        'cta.title': 'Cotiza tu envío sin compromiso',
+        'cta.desc': 'Cuéntanos tu carga y te respondemos con precio, tiempos estimados y documentación aduanera incluida.',
         'cta.phone': 'Teléfono',
         'cta.email': 'Email',
         'cta.whatsapp': 'WhatsApp',
         'cta.phone2': 'Celular',
         'cta.email2': 'Cotizaciones',
         'cta.whatsapp2': 'WhatsApp Ventas',
-        'footer.desc': 'Transporte de carga terrestre internacional. Conectamos Latinoamérica con seguridad y puntualidad, desde 1999.',
+        'footer.desc': 'Transporte de carga terrestre internacional. Conectamos Latinoamérica con seguridad y puntualidad.',
         'footer.services': 'Servicios',
         'footer.routes': 'Rutas',
         'footer.contact': 'Contacto',
         'modal.ftl.title': 'Camión Completo (FTL)',
         'modal.ftl.sub': 'Transporte directo sin intermediarios',
-        'modal.ftl.desc': '<h4>Transporte directo sin intermediarios</h4><p>Un camión completo asignado exclusivamente a tu carga. Viaje directo del punto de origen al destino final sin transbordos ni paradas intermedias.</p><p>Ideal para envíos grandes que requieren velocidad, seguridad y cumplimiento estricto de plazos. Nuestra flota cuenta con rastreo GPS, seguros full cover y conductores con más de 10 años de experiencia internacional.</p>',
-        'modal.ftl.tags': 'Sin transbordos,GPS en tiempo real,Seguro full cover,Rutas internacionales',
+        'modal.ftl.desc': '<h4>Transporte directo con unidad dedicada</h4><p>Un camión completo asignado a tu carga. La operación se planifica desde el origen hasta el destino final según la ruta y las condiciones de la carga.</p><p>Ideal para envíos grandes que requieren control de la unidad y coordinación directa. Nuestra flota cuenta con rastreo GPS y el seguro de carga se contrata según las condiciones de cada operación.</p>',
+        'modal.ftl.tags': 'Unidad dedicada,Rastreo GPS,Rutas internacionales,Seguro según póliza',
         'modal.ltl.title': 'Carga Consolidada (LTL)',
         'modal.ltl.sub': 'Comparte espacio y ahorra',
-        'modal.ltl.desc': '<h4>Soluciones flexibles para cada volumen</h4><p>No necesitas llenar un camión completo. Con carga consolidada compartes espacio con otros envíos y pagás únicamente por los metros cúbicos que ocupás.</p><p>Coordinamos la consolidación en centros de distribución en Santiago, Buenos Aires, São Paulo y Asunción, con frecuencias semanales garantizadas.</p>',
-        'modal.ltl.tags': 'Pago por espacio,Frecuencias semanales,4 centros de distribución,Ideal para pymes',
+        'modal.ltl.desc': '<h4>Soluciones flexibles para cada volumen</h4><p>No necesitas llenar un camión completo. Con carga consolidada compartes espacio con otros envíos y pagas únicamente por los metros cúbicos que ocupas.</p><p>Coordinamos la consolidación de tu carga según la ruta y las condiciones de la operación. Consúltanos por la disponibilidad para tu envío.</p>',
+        'modal.ltl.tags': 'Pago por espacio,Carga consolidada,Consolidación coordinada,Ideal para pymes',
         'modal.ref.title': 'Transporte Refrigerado',
-        'modal.ref.sub': 'Cadena de frío garantizada',
-        'modal.ref.desc': '<h4>Control total de temperatura</h4><p>Flota de unidades refrigeradas con control desde -25°C hasta +25°C. Monitoreo continuo con sensores que registran cada cambio térmico durante todo el trayecto.</p><p>Especialistas en productos perecibles, farmacéuticos, lácteos y alimentos congelados. Certificación sanitaria y alerta automática ante desviaciones.</p>',
-        'modal.ref.tags': '-25°C a +25°C,Sensores automáticos,Certificación sanitaria,Alerta térmica',
+        'modal.ref.sub': 'Cadena de frío controlada',
+        'modal.ref.desc': '<h4>Control de temperatura</h4><p>Unidades refrigeradas con control desde -25°C hasta +25°C. Monitoreo continuo con sensores que registran los cambios térmicos durante el trayecto.</p><p>Para productos perecibles, farmacéuticos, lácteos y alimentos congelados. Consulta la disponibilidad y las condiciones para tu carga.</p>',
+        'modal.ref.tags': '-25°C a +25°C,Sensores de temperatura,Monitoreo continuo,Registro de temperatura',
         'modal.docs.title': 'Documentación Aduanera',
-        'modal.docs.sub': 'Trámites internacionales incluidos',
-        'modal.docs.desc': '<h4>Sin sorpresas en la aduana</h4><p>Nuestro equipo de despachantes se encarga de DUS, DTA, manifiestos de carga, certificados de origen y permisos especiales.</p><p>Trabajamos con las aduanas de Chile, Argentina, Brasil y Paraguay. Conocemos cada regulación para que tu carga cruce sin demoras.</p>',
-        'modal.docs.tags': 'DUS y DTA,Despachantes certificados,4 aduanas,Sin demoras',
+        'modal.docs.sub': 'Trámites internacionales coordinados',
+        'modal.docs.desc': '<h4>Documentación aduanera coordinada</h4><p>Coordinamos la documentación de la operación: DUS, DTA, manifiestos de carga y certificados de origen. Consúltanos por los requisitos específicos de tu carga.</p><p>Gestionamos la documentación según la ruta y la normativa aplicable. Te informamos los antecedentes necesarios antes del despacho.</p>',
+        'modal.docs.tags': 'DUS y DTA,Documentación aduanera,Coordinación en frontera,Gestión integral',
         'modal.ins.title': 'Seguro de Carga',
-        'modal.ins.sub': 'Cobertura total contra todo riesgo',
-        'modal.ins.desc': '<h4>Tu mercadería protegida de punta a punta</h4><p>Seguro full cover: robo, daño por accidente, siniestros naturales, incendio y daño por manipulación. Sin franquicias ni letra chica.</p><p>Cobertura activa desde la carga hasta la entrega final, con indemnización en 48 horas hábiles. Trabajamos con las principales aseguradoras de Latinoamérica.</p>',
-        'modal.ins.tags': 'Full cover,Sin franquicia,Indemnización 48h,Aseguradoras top',
+        'modal.ins.sub': 'Cobertura según las condiciones de la póliza',
+        'modal.ins.desc': '<h4>Tu mercadería protegida durante el transporte</h4><p>El seguro de carga se contrata según el tipo de mercadería y las condiciones de la operación. Te asesoramos para definir la cobertura adecuada.</p><p>La cobertura se activa desde la carga hasta la entrega final, conforme a la póliza contratada. Consúltanos por los detalles antes de tu envío.</p>',
+        'modal.ins.tags': 'Seguro de carga,Cobertura según póliza,Asesoría en siniestros,Acompañamiento',
         'modal.advice.title': 'Asesoría Personalizada',
         'modal.advice.sub': 'Ejecutivo dedicado para cada cliente',
-        'modal.advice.desc': '<h4>Un contacto directo, cero call centers</h4><p>Cada cliente tiene un ejecutivo dedicado que conoce tu operación, tus rutas y tus tiempos. Sin explicar tu problema cada vez que llamás.</p><p>Asesoría en rutas, costos, tiempos de tránsito y documentación. Disponible de lunes a sábado por WhatsApp, teléfono y email.</p>',
+        'modal.advice.desc': '<h4>Un contacto directo, cero call centers</h4><p>Cada cliente tiene un ejecutivo dedicado que conoce tu operación, tus rutas y tus tiempos. Sin explicar tu problema cada vez que llamas.</p><p>Asesoría en rutas, costos, tiempos de tránsito y documentación. Disponible de lunes a sábado por WhatsApp, teléfono y email.</p>',
         'modal.advice.tags': 'Ejecutivo dedicado,Lunes a sábado,WhatsApp directo,Asesoría de rutas',
         'fleet.title': 'Nuestra Flota',
         'fleet.subtitle': 'Unidades equipadas para cada tipo de carga',
@@ -2724,31 +2857,31 @@ body.light-mode .cf-status.ok{color:#15803d}
         'fleet.ramp53.spec1': 'Largo: 16.2 m',
         'fleet.ramp53.spec2': 'Capacidad: 28 tn',
         'fleet.fridge.title': 'Unidad Refrigerada',
-        'fleet.fridge.desc': 'Camiones con control de temperatura -25°C a +25°C. Sistema de monitoreo continuo con sensores y alertas automáticas.',
+        'fleet.fridge.desc': 'Camiones con control de temperatura -25°C a +25°C. Sistema de monitoreo continuo con sensores de temperatura.',
         'fleet.fridge.spec1': 'Temp: -25°C a +25°C',
-        'fleet.fridge.spec2': 'Monitoreo 24/7',
+        'fleet.fridge.spec2': 'Monitoreo continuo',
         'fleet.truck.sub': 'Potencia y confianza para larga distancia',
-        'fleet.truck.desc2': '<h4>Diseñado para las rutas más exigentes</h4><p>Nuestros tractocamiones Euro VI combinan potencia con eficiencia energética. Equipados con rastreo GPS en tiempo real, sistema de frenos ABS y cabinas confortable para conductores con más de 10 años de experiencia internacional.</p><p>Ideal para carga pesada de larga distancia entre Chile, Argentina, Brasil y Paraguay.</p>',
-        'fleet.truck.tags': 'Motor Euro VI,Rastreo GPS,Frenos ABS,Conductores certificados',
+        'fleet.truck.desc2': '<h4>Diseñado para las rutas más exigentes</h4><p>Nuestros tractocamiones están preparados para rutas de larga distancia, con rastreo GPS y sistema de frenos ABS.</p><p>Ideal para carga pesada entre Chile, Argentina, Brasil y Paraguay.</p>',
+        'fleet.truck.tags': 'Larga distancia,Rastreo GPS,Frenos ABS,Rutas internacionales',
         'fleet.ramp48.sub': 'Versatilidad para carga general',
         'fleet.ramp48.desc2': '<h4>La plataforma más utilizada en la región</h4><p>La rampa de 48 pies es la estándar para mercadería general, carga paletizada y contenedores. Con 14.6 metros de largo y capacidad de 26 toneladas, se adapta a la mayoría de las necesidades logísticas.</p><p>Piso de aluminio, sistema de amarre integrado y cortinas laterales para protección de la carga.</p>',
         'fleet.ramp48.tags': '14.6 metros,26 toneladas,Piso de aluminio,Cortinas laterales',
         'fleet.ramp53.sub': 'Para volúmenes grandes y carga especial',
         'fleet.ramp53.desc2': '<h4>Más espacio para tu mercadería</h4><p>La rampa de 53 pies ofrece 16.2 metros de largo y 28 toneladas de capacidad. Diseñada para volúmenes grandes, carga sobredimensionada y envíos que requieren espacio extra.</p><p>Estructura reforzada, sistema de ventilación y iluminación interior para carga de noche.</p>',
         'fleet.ramp53.tags': '16.2 metros,28 toneladas,Estructura reforzada,Ventilación interior',
-        'fleet.fridge.sub': 'Cadena de frío garantizada',
-        'fleet.fridge.desc2': '<h4>Control total de temperatura</h4><p>Unidades refrigeradas con control preciso de -25°C a +25°C. Sistema de monitoreo continuo con sensores que registran cada variação térmica y alertas automáticas ante desviaciones.</p><p>Ideal para productos perecibles, farmacéuticos, lácteos y alimentos congelados. Certificación sanitaria vigente.</p>',
-        'fleet.fridge.tags': '-25°C a +25°C,Sensores automáticos,Certificación sanitaria,Alertas térmicas',
+        'fleet.fridge.sub': 'Cadena de frío controlada',
+        'fleet.fridge.desc2': '<h4>Control de temperatura</h4><p>Unidades refrigeradas con control preciso de -25°C a +25°C. Sistema de monitoreo continuo con sensores que registran los cambios térmicos durante el trayecto.</p><p>Ideal para productos perecibles, farmacéuticos, lácteos y alimentos congelados. Consulta disponibilidad para tu operación.</p>',
+        'fleet.fridge.tags': '-25°C a +25°C,Sensores de temperatura,Monitoreo continuo,Registro de temperatura',
         'faq.title': 'Preguntas Frecuentes',
         'faq.subtitle': 'Resolvemos tus dudas',
         'faq.q1': '¿Cuáles son los tiempos de tránsito?',
-        'faq.a1': 'Los tiempos varían según la ruta: Chile-Argentina 2-4 días, Chile-Brasil 5-7 días, Chile-Paraguay 6-8 días. Te damos un tiempo exacto al cotizar tu envío.',
+        'faq.a1': 'Los tiempos dependen de la ruta, la documentación y los controles en frontera. Al cotizar tu envío te entregamos una estimación para tu operación.',
         'faq.q2': '¿Qué documentación necesito?',
-        'faq.a2': 'Nosotros nos encargamos de toda la documentación aduanera: DUS, DTA, manifiestos de carga y certificados de origen. Vos solo nos das los datos de tu carga.',
+        'faq.a2': 'Nosotros coordinamos la documentación aduanera de la operación: DUS, DTA, manifiestos de carga y certificados de origen. Tú nos entregas los datos de tu carga.',
         'faq.q3': '¿Cómo puedo rastrear mi envío?',
-        'faq.a3': 'Todos nuestros camiones cuentan con GPS en tiempo real. Te enviamos un link de tracking por WhatsApp y podés ver la ubicación 24/7.',
+        'faq.a3': 'Los camiones cuentan con seguimiento GPS. Te enviamos un enlace de tracking por WhatsApp para que puedas revisar la ubicación durante el trayecto.',
         'faq.q4': '¿Trabajan con pedidos mínimos?',
-        'faq.a4': 'Sí, con carga consolidada (LTL) no hay pedido mínimo. Pagás solo por los metros cúbicos que ocupás en el camión.'
+        'faq.a4': 'Con carga consolidada (LTL) compartes espacio con otros envíos y pagas solo por los metros cúbicos que ocupas. Consúltanos por las condiciones de tu operación.'
       },
       pt: {
         'nav.services': 'Serviços',
@@ -2760,20 +2893,21 @@ body.light-mode .cf-status.ok{color:#15803d}
         'hero.v5.title': 'Transporte de carga que cruza fronteiras.',
         'hero.v5.desc': 'Soluções de transporte terrestre internacional entre Chile, Argentina, Brasil e Paraguai. Carga geral e refrigerada com gestão aduaneira.',
         'hero.v5.coverage': 'Cobertura internacional',
-        'hero.v5.tracking': 'Rastreo en ruta',
-        'hero.desc': 'Transporte terrestre internacional entre Chile, Argentina, Brasil e Paraguay. Carga geral e refrigerada com gestão aduaneira completa. <strong>Confiança que cruza fronteiras.</strong>',
+        'hero.v5.tracking': 'Rastreamento em rota',
+        'hero.desc': 'Transporte terrestre internacional entre Chile, Argentina, Brasil e Paraguai. Carga geral e refrigerada com gestão aduaneira completa. <strong>Confiança que cruza fronteiras.</strong>',
         'hero.companyData': 'Dados da empresa',
         'hero.contact': 'Contato',
-        'hero.cta1': 'Cotizar Envio',
+        'hero.cta1': 'Cotar frete',
         'hero.cta2': 'Ver Serviços',
-        'hero.mapLabel': 'Escritório Central — Santiago',
-        'hero.mapCL': 'Escritório Central — Chile',
-        'hero.mapBR': 'Escritório — Brasil',
-        'hero.mapBRCity': 'Em breve',
-        'stat.years': 'Anos de experiência',
-        'stat.countries': 'Países conectados',
-        'stat.ontime': 'Envios por mês',
-        'stat.fleet': 'Caminhões próprios',
+        'hero.mapLabel': 'Cobertura — Chile',
+        'hero.mapCL': 'Cobertura — Chile',
+        'hero.mapCLInfo': 'Transporte terrestre internacional',
+        'hero.mapBR': 'Cobertura — Brasil',
+        'hero.mapBRCity': 'Rotas internacionais',
+        'stat.routes': 'Países conectados',
+        'stat.modes': 'Modalidades de carga',
+        'stat.temp': 'Faixa refrigerada (°C)',
+        'stat.tracking': 'Rastreamento em rota',
         'hsb.ftl': 'Caminhão Completo',
         'hsb.ltl': 'Carga Consolidada',
         'hsb.refrigerated': 'Refrigerado',
@@ -2791,59 +2925,59 @@ body.light-mode .cf-status.ok{color:#15803d}
         'svc.docs.title': 'Documentação Aduaneira',
         'svc.docs.desc': 'Gestão completa de despacho aduaneiro e documentação para cruze internacional.',
         'svc.ins.title': 'Seguro de Carga',
-        'svc.ins.desc': 'Cobertura full contra roubo, dano e sinistros. Sua mercadoria protegida.',
+        'svc.ins.desc': 'Seguro de carga conforme às condições da apólice. Sua mercadoria protegida.',
         'svc.advice.title': 'Assessoria Personalizada',
         'svc.advice.desc': 'Executivo dedicado que conhece sua operação e orienta em cada envio.',
         'svc.more': 'Ver mais',
-        'feat.title': 'Mais de 26 anos conectando a América Latina',
-        'feat.desc1': 'Desde 1999 somos a ponte logística entre Chile, Argentina, Brasil e Paraguay. Conhecemos cada rota, cada aduana e cada necessidade dos nossos clientes.',
-        'feat.desc2': 'Nosso processo de cotação é simples: nos conte sua carga e daremos uma resposta em menos de 24 horas com preço, prazo e documentação inclusa.',
-        'feat.li1': 'Cotação sem compromisso em 24 horas',
+        'feat.title': 'Logística internacional com coordenação direta',
+        'feat.desc1': 'Coordenamos transporte terrestre entre Chile, Argentina, Brasil e Paraguai. Conhecemos a operação e acompanhamos cada envio desde a cotação até a entrega.',
+        'feat.desc2': 'Nosso processo de cotação é simples: nos conte sua carga e daremos uma resposta com preço, prazo estimado e documentação inclusa.',
+        'feat.li1': 'Cotação sem compromisso',
         'feat.li2': 'Documentação aduaneira inclusa no preço',
-        'feat.li3': 'Seguro de carga full cover',
-        'feat.li4': 'Rastreamento GPS em tempo real 24/7',
+        'feat.li3': 'Seguro de carga conforme às condições da apólice',
+        'feat.li4': 'Rastreamento GPS durante o trajeto',
         'feat.li5': 'Suporte por WhatsApp e telefone',
         'feat.li6': 'Executivo dedicado para cada cliente',
-        'metrics.title': 'Números que falam',
+        'metrics.title': 'Cobertura e serviços',
 'testimonials.title': 'Opiniões de clientes',
-        'test1.quote': '"Os serviços contratados por Royal a Transallende, nos deixam muito conformes de acordo com o seguimento que se realiza por cada uma das cargas, os status do tempo nas fronteiras e a pontualidade que tem apresentado nos deixam muito conformes com o serviço, a rapidez e experiência se reflete em que nosso lead time melhora consideravelmente com respeito a outros provedores, muito obrigado."',
+        'test1.quote': '"Os serviços contratados por Royal a Transportes Don Alfonso, nos deixam muito conformes de acordo com o seguimento que se realiza por cada uma das cargas, os status do tempo nas fronteiras e a pontualidade que tem apresentado nos deixam muito conformes com o serviço, a rapidez e experiência se reflete em que nosso lead time melhora consideravelmente com respeito a outros provedores, muito obrigado."',
         'test1.role': 'Importadora, Comercializadora e Distribuidora — Royal Canin Chile Ltda.',
         'test2.quote': '"Transportes Don Alfonso se destacou por entregar um serviço responsável, confiável e profissional. Valoramos especialmente seu compromisso, pontualidade e disposição para atender nossos requerimentos, contribuindo positivamente para o desenvolvimento de nossas operações."',
         'test2.role': 'Operações Logísticas — EZ SHIP LOGISTICS EIRL',
         'test3.quote': '"O tracking em tempo real nos dá tranquilidade total. Nossos clientes sabem exatamente quando chega sua mercadoria."',
         'test3.role': 'CEO — AgroPatagonia SpA',
         'cta.title': 'Cotação sem compromisso',
-        'cta.desc': 'Nos conte sua carga e respondemos em 24 horas com preço, prazo e documentação aduaneira inclusa.',
+        'cta.desc': 'Nos conte sua carga e respondemos com preço, prazo estimado e documentação aduaneira inclusa.',
         'cta.phone': 'Telefone',
         'cta.email': 'Email',
         'cta.whatsapp': 'WhatsApp',
         'cta.phone2': 'Celular',
         'cta.email2': 'Cotações',
         'cta.whatsapp2': 'WhatsApp Vendas',
-        'footer.desc': 'Transporte terrestre internacional de carga. Conectamos a América Latina com segurança e pontualidade, desde 1999.',
+        'footer.desc': 'Transporte terrestre internacional de carga. Conectamos a América Latina com segurança e pontualidade.',
         'footer.services': 'Serviços',
         'footer.routes': 'Rotas',
         'footer.contact': 'Contato',
         'modal.ftl.title': 'Caminhão Completo (FTL)',
         'modal.ftl.sub': 'Transporte direto sem intermediários',
-        'modal.ftl.desc': '<h4>Transporte direto sem intermediários</h4><p>Um caminhão completo atribuído exclusivamente à sua carga. Viagem direta do ponto de origem ao destino final sem transbordos ou paradas intermediárias.</p><p>Ideal para envios grandes que exigem velocidade, segurança e cumprimento estrito de prazos. Nossa frota conta com rastreamento GPS, seguros full cover e motoristas com mais de 10 anos de experiência internacional.</p>',
-        'modal.ftl.tags': 'Sem transbordos,GPS em tempo real,Seguro full cover,Rotas internacionais',
+        'modal.ftl.desc': '<h4>Transporte direto com unidade dedicada</h4><p>Um caminhão completo atribuído à sua carga. A operação é planejada da origem ao destino final conforme a rota e as condições da carga.</p><p>Ideal para envios grandes que exigem controle da unidade e coordenação direta. Nossa frota conta com rastreamento GPS e o seguro de carga é contratado conforme as condições de cada operação.</p>',
+        'modal.ftl.tags': 'Unidade dedicada,Rastreamento GPS,Rotas internacionais,Seguro conforme apólice',
         'modal.ltl.title': 'Carga Consolidada (LTL)',
         'modal.ltl.sub': 'Compartilhe espaço e economize',
-        'modal.ltl.desc': '<h4>Soluções flexíveis para cada volume</h4><p>Você não precisa preencher um caminhão completo. Com carga consolidada, você compartilha espaço com outros envios e paga apenas pelos metros cúbicos que ocupa.</p><p>Coordenamos a consolidação em centros de distribuição em Santiago, Buenos Aires, São Paulo e Assunção, com frequências semanais garantidas.</p>',
-        'modal.ltl.tags': 'Pagamento por espaço,Frequências semanais,4 centros de distribuição,Ideal para PMEs',
+        'modal.ltl.desc': '<h4>Soluções flexíveis para cada volume</h4><p>Você não precisa preencher um caminhão completo. Com carga consolidada, compartilha espaço com outros envios e paga apenas pelos metros cúbicos que ocupa.</p><p>Coordenamos a consolidação da sua carga conforme a rota e as condições da operação. Consulte a disponibilidade para o seu envio.</p>',
+        'modal.ltl.tags': 'Pagamento por espaço,Carga consolidada,Consolidação coordenada,Ideal para PMEs',
         'modal.ref.title': 'Transporte Refrigerado',
-        'modal.ref.sub': 'Cadeia de frio garantida',
-        'modal.ref.desc': '<h4>Controle total de temperatura</h4><p>Frota de unidades refrigeradas com controle de -25°C a +25°C. Monitoramento contínuo com sensores que registram cada variação térmica durante toda a viagem.</p><p>Especialistas em produtos perecíveis, farmacêuticos, laticínios e alimentos congelados. Certificação sanitária e alerta automático para desvios.</p>',
-        'modal.ref.tags': '-25°C a +25°C,Sensores automáticos,Certificação sanitária,Alerta térmico',
+        'modal.ref.sub': 'Cadeia de frio controlada',
+        'modal.ref.desc': '<h4>Controle de temperatura</h4><p>Unidades refrigeradas com controle de -25°C a +25°C. Monitoramento contínuo com sensores que registram as variações térmicas durante a viagem.</p><p>Para produtos perecíveis, farmacêuticos, laticínios e alimentos congelados. Consulte a disponibilidade e as condições para a sua carga.</p>',
+        'modal.ref.tags': '-25°C a +25°C,Sensores de temperatura,Monitoramento contínuo,Registro de temperatura',
         'modal.docs.title': 'Documentação Aduaneira',
-        'modal.docs.sub': 'Trâmites internacionais inclusos',
-        'modal.docs.desc': '<h4>Sem surpresas na aduana</h4><p>Nossa equipe de despachantes cuida de DUS, DTA, manifiestos de carga, certificados de origem e permissões especiais.</p><p>Trabalhamos com as alfândegas do Chile, Argentina, Brasil e Paraguay. Conhecemos cada regulação para que sua carga cruze sem atrasos.</p>',
-        'modal.docs.tags': 'DUS e DTA,Despachantes certificados,4 alfândegas,Sem atrasos',
+        'modal.docs.sub': 'Trâmites internacionais coordenados',
+        'modal.docs.desc': '<h4>Documentação aduaneira coordenada</h4><p>Coordenamos a documentação da operação: DUS, DTA, manifestos de carga e certificados de origem. Consulte os requisitos específicos da sua carga.</p><p>Gerenciamos a documentação conforme a rota e a normativa aplicável. Informamos os dados necessários antes do despacho.</p>',
+        'modal.docs.tags': 'DUS e DTA,Documentação aduaneira,Coordenação na fronteira,Gestão integral',
         'modal.ins.title': 'Seguro de Carga',
-        'modal.ins.sub': 'Cobertura total contra todos os riscos',
-        'modal.ins.desc': '<h4>Sua mercadoria protegida de ponta a ponta</h4><p>Seguro full cover: roubo, dano por acidente, sinistros naturais, incêndio e dano por manuseio. Sem franquias nem letra miúda.</p><p>Cobertura ativa da carga até a entrega final, com indenização em 48 horas úteis. Trabalhamos com as principais seguradoras da América Latina.</p>',
-        'modal.ins.tags': 'Full cover,Sem franquia,Indenização 48h,Seguradoras top',
+        'modal.ins.sub': 'Cobertura conforme as condições da apólice',
+        'modal.ins.desc': '<h4>Sua mercadoria protegida durante o transporte</h4><p>O seguro de carga é contratado conforme o tipo de mercadoria e as condições da operação. Assessoramos você para definir a cobertura adequada.</p><p>A cobertura é ativada da carga até a entrega final, conforme a apólice contratada. Consulte os detalhes antes do seu envio.</p>',
+        'modal.ins.tags': 'Seguro de carga,Cobertura conforme apólice,Assessoria em sinistros,Acompanhamento',
         'modal.advice.title': 'Assessoria Personalizada',
         'modal.advice.sub': 'Executivo dedicado para cada cliente',
         'modal.advice.desc': '<h4>Um contato direto, zero call centers</h4><p>Cada cliente tem um executivo dedicado que conhece sua operação, suas rotas e seus tempos. Sem precisar explicar seu problema toda vez que liga.</p><p>Assessoria em rotas, custos, tempos de trânsito e documentação. Disponível de segunda a sábado por WhatsApp, telefone e email.</p>',
@@ -2861,31 +2995,31 @@ body.light-mode .cf-status.ok{color:#15803d}
         'fleet.ramp53.spec1': 'Comprimento: 16,2 m',
         'fleet.ramp53.spec2': 'Capacidade: 28 t',
         'fleet.fridge.title': 'Unidade Refrigerada',
-        'fleet.fridge.desc': 'Caminhões com controle de temperatura -25°C a +25°C. Sistema de monitoramento contínuo com sensores e alertas automáticos.',
+        'fleet.fridge.desc': 'Caminhões com controle de temperatura -25°C a +25°C. Sistema de monitoramento contínuo com sensores de temperatura.',
         'fleet.fridge.spec1': 'Temp: -25°C a +25°C',
-        'fleet.fridge.spec2': 'Monitoramento 24/7',
+        'fleet.fridge.spec2': 'Monitoramento contínuo',
         'fleet.truck.sub': 'Potência e confiança para longa distância',
-        'fleet.truck.desc2': '<h4>Projetado para as rotas mais exigentes</h4><p>Nossos caminhões tratores Euro VI combinam potência com eficiência energética. Equipados com rastreamento GPS em tempo real, sistema de freios ABS e cabines confortáveis para motoristas com mais de 10 anos de experiência internacional.</p><p>Ideal para carga pesada de longa distância entre Chile, Argentina, Brasil e Paraguai.</p>',
-        'fleet.truck.tags': 'Motor Euro VI,Rastreamento GPS,Freios ABS,Motoristas certificados',
+        'fleet.truck.desc2': '<h4>Projetado para as rotas mais exigentes</h4><p>Nossos caminhões tratores estão preparados para rotas de longa distância, com rastreamento GPS e sistema de freios ABS.</p><p>Ideal para carga pesada entre Chile, Argentina, Brasil e Paraguai.</p>',
+        'fleet.truck.tags': 'Longa distância,Rastreamento GPS,Freios ABS,Rotas internacionais',
         'fleet.ramp48.sub': 'Versatilidade para carga geral',
         'fleet.ramp48.desc2': '<h4>A plataforma mais utilizada na região</h4><p>A rampa de 48 pés é o padrão para mercadoria geral, carga paletizada e contêineres. Com 14,6 metros de comprimento e capacidade de 26 toneladas, adapta-se à maioria das necessidades logísticas.</p><p>Piso de alumínio, sistema de amarração integrado e cortinas laterais para proteção da carga.</p>',
         'fleet.ramp48.tags': '14,6 metros,26 toneladas,Piso de alumínio,Cortinas laterais',
         'fleet.ramp53.sub': 'Para grandes volumes e carga especial',
         'fleet.ramp53.desc2': '<h4>Mais espaço para sua mercadoria</h4><p>A rampa de 53 pés oferece 16,2 metros de comprimento e 28 toneladas de capacidade. Projetada para grandes volumes, carga sobredimensionada e envios que exigem espaço extra.</p><p>Estrutura reforçada, sistema de ventilação e iluminação interior para carga noturna.</p>',
         'fleet.ramp53.tags': '16,2 metros,28 toneladas,Estrutura reforçada,Ventilação interior',
-        'fleet.fridge.sub': 'Cadeia de frio garantida',
-        'fleet.fridge.desc2': '<h4>Controle total de temperatura</h4><p>Unidades refrigeradas com controle preciso de -25°C a +25°C. Sistema de monitoramento contínuo com sensores que registram cada variação térmica e alertas automáticos para desvios.</p><p>Ideal para produtos perecíveis, farmacêuticos, laticínios e alimentos congelados. Certificação sanitária vigente.</p>',
-        'fleet.fridge.tags': '-25°C a +25°C,Sensores automáticos,Certificação sanitária,Alertas térmicos',
+        'fleet.fridge.sub': 'Cadeia de frio controlada',
+        'fleet.fridge.desc2': '<h4>Controle de temperatura</h4><p>Unidades refrigeradas com controle preciso de -25°C a +25°C. Sistema de monitoramento contínuo com sensores que registram as variações térmicas durante a viagem.</p><p>Ideal para produtos perecíveis, farmacêuticos, laticínios e alimentos congelados. Consulte disponibilidade para sua operação.</p>',
+        'fleet.fridge.tags': '-25°C a +25°C,Sensores de temperatura,Monitoramento contínuo,Registro de temperatura',
         'faq.title': 'Perguntas Frequentes',
         'faq.subtitle': 'Resolvemos suas dúvidas',
         'faq.q1': 'Quais são os tempos de trânsito?',
-        'faq.a1': 'Os tempos variam conforme a rota: Chile-Argentina 2-4 dias, Chile-Brasil 5-7 dias, Chile-Paraguai 6-8 dias. Damos um tempo exato ao cotar seu envio.',
+        'faq.a1': 'Os tempos dependem da rota, da documentação e dos controles na fronteira. Ao cotar seu envio, entregamos uma estimativa para a sua operação.',
         'faq.q2': 'Que documentação preciso?',
         'faq.a2': 'Nós cuidamos de toda a documentação aduaneira: DUS, DTA, manifestos de carga e certificados de origem. Você só nos dá os dados da sua carga.',
         'faq.q3': 'Como posso rastrear meu envio?',
-        'faq.a3': 'Todos os nossos caminhões possuem GPS em tempo real. Enviamos um link de rastreamento por WhatsApp e você pode ver a localização 24/7.',
+        'faq.a3': 'Os caminhões contam com rastreamento GPS. Enviamos um link de rastreamento por WhatsApp para que você possa consultar a localização durante o trajeto.',
         'faq.q4': 'Trabalham com pedidos mínimos?',
-        'faq.a4': 'Sim, com carga consolidada (LTL) não há pedido mínimo. Você paga apenas pelos metros cúbicos que ocupa no caminhão.'
+        'faq.a4': 'Com carga consolidada (LTL), você compartilha espaço com outros envios e paga apenas pelos metros cúbicos que ocupa. Consulte as condições para a sua operação.'
       },
       en: {
         'nav.services': 'Services',
@@ -2903,14 +3037,15 @@ body.light-mode .cf-status.ok{color:#15803d}
         'hero.contact': 'Contact',
         'hero.cta1': 'Get a Quote',
         'hero.cta2': 'View Services',
-        'hero.mapLabel': 'Head Office — Santiago',
-        'hero.mapCL': 'Head Office — Chile',
-        'hero.mapBR': 'Office — Brazil',
-        'hero.mapBRCity': 'Coming soon',
-        'stat.years': 'Years of experience',
-        'stat.countries': 'Countries connected',
-        'stat.ontime': 'Monthly shipments',
-        'stat.fleet': 'Own fleet',
+        'hero.mapLabel': 'Coverage — Chile',
+        'hero.mapCL': 'Coverage — Chile',
+        'hero.mapCLInfo': 'International land transport',
+        'hero.mapBR': 'Coverage — Brazil',
+        'hero.mapBRCity': 'International routes',
+        'stat.routes': 'Connected countries',
+        'stat.modes': 'Cargo modes',
+        'stat.temp': 'Refrigerated range (°C)',
+        'stat.tracking': 'Route tracking',
         'hsb.ftl': 'Full Truck Load',
         'hsb.ltl': 'Less Than Truckload',
         'hsb.refrigerated': 'Refrigerated',
@@ -2928,59 +3063,59 @@ body.light-mode .cf-status.ok{color:#15803d}
         'svc.docs.title': 'Customs Documentation',
         'svc.docs.desc': 'Complete management of customs clearance and documentation for international crossing.',
         'svc.ins.title': 'Cargo Insurance',
-        'svc.ins.desc': 'Full coverage against theft, damage and incidents. Your merchandise protected.',
+        'svc.ins.desc': 'Cargo insurance according to policy conditions. Your merchandise protected.',
         'svc.advice.title': 'Personalized Advisory',
         'svc.advice.desc': 'Dedicated executive who knows your operation and advises you on every shipment.',
         'svc.more': 'Learn more',
-        'feat.title': 'Over 26 years connecting Latin America',
-        'feat.desc1': 'Since 1999 we have been the logistics bridge between Chile, Argentina, Brazil and Paraguay. We know every route, every customs office and every need of our clients.',
-        'feat.desc2': 'Our quoting process is simple: tell us about your cargo and we give you a response within 24 hours with price, timeline and documentation included.',
-        'feat.li1': 'No-obligation quote within 24 hours',
+        'feat.title': 'International logistics with direct coordination',
+        'feat.desc1': 'We coordinate land transport between Chile, Argentina, Brazil and Paraguay. We know the operation and support every shipment from quote to delivery.',
+        'feat.desc2': 'Our quoting process is simple: tell us about your cargo and we give you a response with price, estimated timeline and documentation included.',
+        'feat.li1': 'No-obligation quote',
         'feat.li2': 'Customs documentation included in the price',
-        'feat.li3': 'Full cover cargo insurance',
-        'feat.li4': 'Real-time GPS tracking 24/7',
+        'feat.li3': 'Cargo insurance according to policy conditions',
+        'feat.li4': 'GPS tracking during the trip',
         'feat.li5': 'WhatsApp and phone support',
         'feat.li6': 'Dedicated executive for each client',
-        'metrics.title': 'Numbers that speak',
+        'metrics.title': 'Coverage and services',
 'testimonials.title': 'Client testimonials',
-        'test1.quote': '"The services contracted by Royal from Transallende leave us very satisfied with the tracking performed for each load, the border wait time status and the punctuality presented leave us very satisfied with the service, the speed and experience are reflected in our lead time improving considerably compared to other providers, thank you very much."',
+        'test1.quote': '"The services contracted by Royal from Transportes Don Alfonso leave us very satisfied with the tracking performed for each load, the border wait time status and the punctuality presented leave us very satisfied with the service, the speed and experience are reflected in our lead time improving considerably compared to other providers, thank you very much."',
         'test1.role': 'Importer, Distributor and Marketer — Royal Canin Chile Ltda.',
         'test2.quote': '"Transportes Don Alfonso has stood out for delivering a responsible, reliable and professional service. We especially value their commitment, punctuality and willingness to attend to our requirements, positively contributing to the development of our operations."',
         'test2.role': 'Logistics Operations — EZ SHIP LOGISTICS EIRL',
         'test3.quote': '"Real-time tracking gives us total peace of mind. Our clients know exactly when their merchandise arrives."',
         'test3.role': 'CEO — AgroPatagonia SpA',
         'cta.title': 'Get your no-obligation quote',
-        'cta.desc': 'Tell us about your cargo and we respond within 24 hours with price, timelines and customs documentation included.',
+        'cta.desc': 'Tell us about your cargo and we respond with price, estimated timelines and customs documentation included.',
         'cta.phone': 'Phone',
         'cta.email': 'Email',
         'cta.whatsapp': 'WhatsApp',
         'cta.phone2': 'Mobile',
         'cta.email2': 'Quotes',
         'cta.whatsapp2': 'WhatsApp Sales',
-        'footer.desc': 'International land freight transport. We connect Latin America safely and on time, since 1999.',
+        'footer.desc': 'International land freight transport. We connect Latin America safely and on time.',
         'footer.services': 'Services',
         'footer.routes': 'Routes',
         'footer.contact': 'Contact',
         'modal.ftl.title': 'Full Truck Load (FTL)',
         'modal.ftl.sub': 'Direct transport without intermediaries',
-        'modal.ftl.desc': '<h4>Direct transport without intermediaries</h4><p>A full truck assigned exclusively to your cargo. Direct trip from origin to final destination without transfers or intermediate stops.</p><p>Ideal for large shipments that require speed, security and strict deadline compliance. Our fleet features GPS tracking, full cover insurance and drivers with over 10 years of international experience.</p>',
-        'modal.ftl.tags': 'No transfers,Real-time GPS,Full cover insurance,International routes',
+        'modal.ftl.desc': '<h4>Direct transport with a dedicated unit</h4><p>A full truck assigned to your cargo. The operation is planned from origin to final destination according to the route and cargo conditions.</p><p>Ideal for large shipments that require unit control and direct coordination. Our fleet has GPS tracking and cargo insurance is arranged according to each operation.</p>',
+        'modal.ftl.tags': 'Dedicated unit,GPS tracking,International routes,Insurance per policy',
         'modal.ltl.title': 'Less Than Truckload (LTL)',
         'modal.ltl.sub': 'Share space and save',
-        'modal.ltl.desc': '<h4>Flexible solutions for every volume</h4><p>You don\'t need to fill a full truck. With consolidated cargo you share space with other shipments and pay only for the cubic meters you use.</p><p>We coordinate consolidation at distribution centers in Santiago, Buenos Aires, São Paulo and Asunción, with guaranteed weekly frequencies.</p>',
-        'modal.ltl.tags': 'Pay per space,Weekly frequencies,4 distribution centers,Ideal for SMEs',
+        'modal.ltl.desc': '<h4>Flexible solutions for every volume</h4><p>You don\'t need to fill a full truck. With consolidated cargo you share space with other shipments and pay only for the cubic meters you use.</p><p>We coordinate your cargo consolidation according to the route and the conditions of the operation. Ask about availability for your shipment.</p>',
+        'modal.ltl.tags': 'Pay per space,Consolidated cargo,Coordinated consolidation,Ideal for SMEs',
         'modal.ref.title': 'Refrigerated Transport',
-        'modal.ref.sub': 'Guaranteed cold chain',
-        'modal.ref.desc': '<h4>Total temperature control</h4><p>Fleet of refrigerated units with control from -25°C to +25°C. Continuous monitoring with sensors that record every thermal change throughout the trip.</p><p>Specialists in perishable products, pharmaceuticals, dairy and frozen foods. Sanitary certification and automatic alerts for deviations.</p>',
-        'modal.ref.tags': '-25°C to +25°C,Automatic sensors,Sanitary certification,Thermal alert',
+        'modal.ref.sub': 'Controlled cold chain',
+        'modal.ref.desc': '<h4>Temperature control</h4><p>Refrigerated units with control from -25°C to +25°C. Continuous monitoring with sensors that record thermal changes during the trip.</p><p>For perishable products, pharmaceuticals, dairy and frozen foods. Ask about availability and conditions for your cargo.</p>',
+        'modal.ref.tags': '-25°C to +25°C,Temperature sensors,Continuous monitoring,Temperature logging',
         'modal.docs.title': 'Customs Documentation',
-        'modal.docs.sub': 'International procedures included',
-        'modal.docs.desc': '<h4>No surprises at customs</h4><p>Our team of customs brokers handles DUS, DTA, cargo manifests, certificates of origin and special permits.</p><p>We work with customs offices in Chile, Argentina, Brazil and Paraguay. We know every regulation so your cargo crosses without delays.</p>',
-        'modal.docs.tags': 'DUS and DTA,Certified brokers,4 customs offices,No delays',
+        'modal.docs.sub': 'Coordinated international procedures',
+        'modal.docs.desc': '<h4>Coordinated customs documentation</h4><p>We coordinate the documentation for the operation: DUS, DTA, cargo manifests and certificates of origin. Ask about the specific requirements for your cargo.</p><p>We manage documentation according to the route and applicable regulations. We inform you of the required details before dispatch.</p>',
+        'modal.docs.tags': 'DUS and DTA,Customs documentation,Border coordination,End-to-end management',
         'modal.ins.title': 'Cargo Insurance',
-        'modal.ins.sub': 'Total coverage against all risks',
-        'modal.ins.desc': '<h4>Your merchandise protected end to end</h4><p>Full cover insurance: theft, accidental damage, natural incidents, fire and handling damage. No deductibles or fine print.</p><p>Coverage active from loading to final delivery, with compensation within 48 business hours. We work with the leading insurers in Latin America.</p>',
-        'modal.ins.tags': 'Full cover,No deductible,48h compensation,Top insurers',
+        'modal.ins.sub': 'Coverage according to policy conditions',
+        'modal.ins.desc': '<h4>Your merchandise protected during transport</h4><p>Cargo insurance is arranged according to the type of merchandise and the conditions of the operation. We advise you to define the appropriate coverage.</p><p>Coverage is active from loading to final delivery, according to the policy. Ask us for details before your shipment.</p>',
+        'modal.ins.tags': 'Cargo insurance,Coverage per policy,Claims support,Accompaniment',
         'modal.advice.title': 'Personalized Advisory',
         'modal.advice.sub': 'Dedicated executive for each client',
         'modal.advice.desc': '<h4>Direct contact, zero call centers</h4><p>Each client has a dedicated executive who knows your operation, your routes and your timelines. No need to explain your issue every time you call.</p><p>Advisory on routes, costs, transit times and documentation. Available Monday through Saturday via WhatsApp, phone and email.</p>',
@@ -2998,29 +3133,29 @@ body.light-mode .cf-status.ok{color:#15803d}
         'fleet.ramp53.spec1': 'Length: 16.2 m',
         'fleet.ramp53.spec2': 'Capacity: 28 t',
         'fleet.fridge.title': 'Refrigerated Unit',
-        'fleet.fridge.desc': 'Trucks with temperature control from -25°C to +25°C. Continuous monitoring system with sensors and automatic alerts.',
+        'fleet.fridge.desc': 'Trucks with temperature control from -25°C to +25°C. Continuous monitoring system with temperature sensors.',
         'fleet.fridge.spec1': 'Temp: -25°C to +25°C',
-        'fleet.fridge.spec2': '24/7 monitoring',
+        'fleet.fridge.spec2': 'Continuous monitoring',
         'fleet.truck.sub': 'Power and reliability for long distances',
-        'fleet.truck.desc2': '<h4>Designed for the most demanding routes</h4><p>Our Euro VI tractor trucks combine power with energy efficiency. Equipped with real-time GPS tracking, ABS braking system and comfortable cabs for drivers with over 10 years of international experience.</p><p>Ideal for heavy long-distance cargo between Chile, Argentina, Brazil and Paraguay.</p>',
-        'fleet.truck.tags': 'Euro VI engine,GPS tracking,ABS brakes,Certified drivers',
+        'fleet.truck.desc2': '<h4>Designed for the most demanding routes</h4><p>Our tractor trucks are prepared for long-distance routes, with GPS tracking and ABS braking.</p><p>Ideal for heavy cargo between Chile, Argentina, Brazil and Paraguay.</p>',
+        'fleet.truck.tags': 'Long distance,GPS tracking,ABS brakes,International routes',
         'fleet.ramp48.sub': 'Versatility for general cargo',
         'fleet.ramp48.desc2': '<h4>The most widely used platform in the region</h4><p>The 48-foot trailer is the standard for general merchandise, palletized cargo and containers. With 14.6 meters in length and 26-ton capacity, it adapts to most logistics needs.</p><p>Aluminum floor, integrated tie-down system and side curtains for cargo protection.</p>',
         'fleet.ramp48.tags': '14.6 meters,26 tons,Aluminum floor,Side curtains',
         'fleet.ramp53.sub': 'For large volumes and special cargo',
         'fleet.ramp53.desc2': '<h4>More space for your merchandise</h4><p>The 53-foot trailer offers 16.2 meters in length and 28-ton capacity. Designed for large volumes, oversized cargo and shipments requiring extra space.</p><p>Reinforced structure, ventilation system and interior lighting for nighttime loading.</p>',
         'fleet.ramp53.tags': '16.2 meters,28 tons,Reinforced structure,Interior ventilation',
-        'fleet.fridge.sub': 'Guaranteed cold chain',
-        'fleet.fridge.desc2': '<h4>Total temperature control</h4><p>Refrigerated units with precise control from -25°C to +25°C. Continuous monitoring system with sensors that record every thermal change and automatic alerts for deviations.</p><p>Ideal for perishable products, pharmaceuticals, dairy and frozen foods. Valid sanitary certification.</p>',
-        'fleet.fridge.tags': '-25°C to +25°C,Automatic sensors,Sanitary certification,Thermal alerts',
+        'fleet.fridge.sub': 'Controlled cold chain',
+        'fleet.fridge.desc2': '<h4>Temperature control</h4><p>Refrigerated units with precise control from -25°C to +25°C. Continuous monitoring system with sensors that record thermal changes during the trip.</p><p>Ideal for perishable products, pharmaceuticals, dairy and frozen foods. Ask about availability for your operation.</p>',
+        'fleet.fridge.tags': '-25°C to +25°C,Temperature sensors,Continuous monitoring,Temperature logging',
         'faq.title': 'Frequently Asked Questions',
         'faq.subtitle': 'We answer your questions',
         'faq.q1': 'What are the transit times?',
-        'faq.a1': 'Times vary by route: Chile-Argentina 2-4 days, Chile-Brazil 5-7 days, Chile-Paraguay 6-8 days. We give you an exact time when you request a quote.',
+        'faq.a1': 'Transit times depend on the route, documentation and border controls. When you request a quote, we provide an estimate for your operation.',
         'faq.q2': 'What documentation do I need?',
         'faq.a2': 'We handle all customs documentation: DUS, DTA, cargo manifests and certificates of origin. You just give us your cargo details.',
         'faq.q3': 'How can I track my shipment?',
-        'faq.a3': 'All our trucks have real-time GPS tracking. We send you a tracking link via WhatsApp and you can see the location 24/7.',
+        'faq.a3': 'Our trucks have GPS tracking. We send you a tracking link via WhatsApp so you can check the location during the trip.',
         'faq.q4': 'Do you work with minimum orders?',
         'faq.a4': 'Yes, with consolidated cargo (LTL) there is no minimum order. You only pay for the cubic meters you use in the truck.'
       }
@@ -3039,11 +3174,11 @@ body.light-mode .cf-status.ok{color:#15803d}
         const key = el.getAttribute('data-i18n');
         if (T[lang] && T[lang][key]) el.innerHTML = T[lang][key];
       });
-      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'es';
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'es-CL';
       if (lang === 'pt') {
         document.title = 'Transportes Don Alfonso | Transporte de Carga Chile - Argentina - Brasil - Paraguai';
       } else {
-        document.title = 'Transportes Don Alfonso | Transporte de Carga Chile - Argentina - Brasil - Paraguay';
+        document.title = 'Transporte de Carga Chile, Argentina y Brasil | Don Alfonso';
       }
       if (typeof updateServiceCards === 'function') updateServiceCards();
     }
@@ -3114,7 +3249,10 @@ const svcPhotos = ['assets/img/servicio-ftl.webp','assets/img/servicio-ltl.webp'
     }
 
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') { closeService(); closeFleet(); }
+      if (e.key === 'Escape') {
+        closeService(); closeFleet();
+        if (document.getElementById('mobileMenu').classList.contains('open')) toggleMobileMenu();
+      }
     });
     function switchOffice(country) {
       document.getElementById('mapOverlayCl').style.display = country === 'cl' ? '' : 'none';
@@ -3140,8 +3278,16 @@ const svcPhotos = ['assets/img/servicio-ftl.webp','assets/img/servicio-ltl.webp'
     }
 
     function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('open');
-      document.querySelector('.hamburger').classList.toggle('open');
+      var menu = document.getElementById('mobileMenu');
+      var burger = document.querySelector('.hamburger');
+      var open = menu.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+      menu.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('menu-open', open);
+      if (open) menu.removeAttribute('inert');
+      else menu.setAttribute('inert', '');
     }
 
     var currentTheme = localStorage.getItem('trans_theme') || 'light';
@@ -3182,7 +3328,7 @@ syncMapTiles('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
     document.addEventListener('DOMContentLoaded', function() {
       setLang(currentLang);
 
-window.__initTransallendesMap = function () {
+window.__initDonAlfonsoMap = function () {
   if (window._leafletMap) return;
   var el = document.getElementById('leafletMap');
   if (!el || typeof L === 'undefined') return;
@@ -3213,15 +3359,15 @@ window.__initTransallendesMap = function () {
     iconSize: [18, 18],
     iconAnchor: [9, 9]
   });
-  L.marker([-33.456, -70.738], { icon: clIcon }).addTo(map)
-  .bindPopup('<b>Transportes Don Alfonso</b><br>{{DOMICILIO}}');
+  L.marker([-33.456, -70.738], { icon: clIcon, title: 'Cobertura de Transportes Don Alfonso en Chile', alt: 'Cobertura de Transportes Don Alfonso en Chile' }).addTo(map)
+  .bindPopup('<b>Transportes Don Alfonso</b><br>Cobertura Chile, Argentina, Brasil y Paraguay');
   setTimeout(function () { map.invalidateSize(); }, 200);
   if (typeof moveMapThumb === 'function') moveMapThumb();
 };
 window.__tlMapConsentOk = function () {
   try { return localStorage.getItem('tl_consent') === 'granted'; } catch (e) { return false; }
 };
-if (window.__tlMapConsentOk()) window.__initTransallendesMap();
+if (window.__tlMapConsentOk()) window.__initDonAlfonsoMap();
       applyTheme();
       moveMapThumb();
       window.addEventListener('resize', moveMapThumb);
@@ -3319,12 +3465,12 @@ document.addEventListener('DOMContentLoaded', function(){
       </div>
     </div>
   </div>
-<script id="transallendes-consent">
+<script id="donalfonso-consent">
 (function () {
   'use strict';
   var K_CONSENT = 'tl_consent';   // granted | denied  (analitica)
   var K_MAP = 'tl_map';           // '1'              (teselas del mapa)
-  var GA_ID = '{{GA_ID}}';
+  var GA_ID = '';
   var pendiente = function (v) { return !v || v.indexOf('{{') === 0; };
 
   function leer(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
@@ -3347,7 +3493,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function activarMapa() {
     guardar(K_MAP, '1');
-    if (window.__initTransallendesMap) window.__initTransallendesMap();
+    if (window.__initDonAlfonsoMap) window.__initDonAlfonsoMap();
   }
 
   function decision(v) {
@@ -3391,7 +3537,8 @@ document.addEventListener('DOMContentLoaded', function(){
       var boton = form.querySelector('.cf-submit');
       if (form.elements['sitio_web'].value) { ev.preventDefault(); return; }  // honeypot
       if (!form.reportValidity()) { ev.preventDefault(); return; }
-      if (form.getAttribute('action').indexOf('{{') === -1) return;         // endpoint real: POST normal
+      var endpoint = form.getAttribute('action') || '';
+      if (endpoint && endpoint.indexOf('{{') === -1) return;                // endpoint real: POST normal
       ev.preventDefault();
       var d = new FormData(form);
       var cuerpo = 'Nombre: ' + d.get('nombre') + '\n' +
@@ -3403,7 +3550,7 @@ document.addEventListener('DOMContentLoaded', function(){
         encodeURIComponent('Cotizacion desde el sitio') + '&body=' + encodeURIComponent(cuerpo);
       boton.disabled = true;
       st.className = 'cf-status ok';
-      st.textContent = 'Se abrio tu programa de correo con la solicitud. Si no ocurre, escribenos a jmallendesa@transallen.cl, hugo@transallen.cl o transportesdonalfonso@gmail.com.';
+      st.textContent = 'Se abrió tu programa de correo con la solicitud. Si no ocurre, escríbenos a jmallendesa@transallen.cl, hugo@transallen.cl o transportesdonalfonso@gmail.com.';
     });
   }
 })();
